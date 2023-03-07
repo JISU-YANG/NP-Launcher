@@ -20,12 +20,15 @@
                 bottom: 20px;
                 width: 100%;
                 height: 400px;
-                background: rgba(0, 0, 0, 0.5);
+                background: rgba(0, 0, 0, 0.8);
             }
+
             #left-box{
                 position: relative;
-                width: 900px;
-                background: #f2f2f2;
+                width: 820px;
+                height: 320px;;
+                margin-left: 40px;
+                margin-top: 40px;
             }
             #right-box{
                 position: relative;
@@ -53,13 +56,37 @@
                 width: 70%;
             }
             .item-box{
+                display: inline-flex;
+                justify-content: space-between;
                 width: 100%;
+                height: 158px;
+            }
+            #game-area > div{
+                position: relative;
+                width: 160px;
                 height: 180px;
-
+                border-radius: 25px;
+            }
+            #game-area > div > img{
+                width: 160px;
+                height: 180px;
+                border-radius: 25px;
+            }
+            #game-area > div > span{
+                position: absolute;
+                bottom: 30px;
+                left:20px;
+                font-size: 18px;
+                font-weight: 700;
+                color:#fff;
+                background: rgba(0, 0, 0, 0.6);
             }
             .footer{
-                width: 100%;
+                position: fixed;
+                width: 1142px;
                 height: 40px;
+                left: 8px;
+                bottom: 20px;
                 background: #222;
             }
             #search-area{
@@ -83,7 +110,7 @@
             #input-search{
                 border: none;
                 border-bottom: 1px solid #000;
-                width: 300px;
+                width: 250px;
             }
             #icon-search{
                 width: 30px;
@@ -102,17 +129,87 @@
                 height: 20px;
                 margin: 15px 0px;
             }
+            #tool-area{
+                margin-top:40px;
+                height: 80px;
+            }
+            #tool-area > div{
+                width: 80px;
+                height: 80px;
+                text-align: center;
+                background: #000;
+                border-radius: 10px;
+            }
+            #tool-area > div > img{
+                display: block;
+                width: 40px;
+                height: 40px;
+                padding: 5px;
+                margin-top: 3px;
+                margin-left: 15px;
+                border-radius: 10px;
+                background: #000;
+            }
+            #tool-area > div > span{
+                font-size: 10pt;
+                font-weight: 700;
+                color: #fff;
+                margin-top:5px;
+            }
           </style>
     </head>
     <body>
         <div id="container">
             <div id="left-box">
-                <div class="item-box">
-                    <button onclick="window.location.reload(true)">새로고침</button>
+                <div class="item-box" id="game-area">
+                    <div>
+                        <img src="src/game/game-lol.png" alt="롤">
+                        <span>리그 오브 레전드</span>
+                    </div>
+                    <div>
+                        <img src="src/game/game-maple.png" alt="메이플">
+                        <span>메이플 스토리</span>
+                    </div>
+                    <div>
+                        <img src="src/game/game-cartrider.png" alt="카트라이더">
+                        <span>카트라이더</span>
+                    </div>
+                    <div>
+                        <img src="src/game/game-mabinogi.png" alt="마비노기">
+                        <span>마비노기</span>
+                    </div>
+                    <div>
+                        <img src="src/game/game-arknights.png" alt="명일방주">
+                        <span>명일방주</span>
+                    </div>
                 </div>
-                <div class="item-box">
-                </div>
-                <div class="footer">
+                <div class="item-box" id="tool-area">
+                    <div>
+                        <img src="src/tool/tool-vscode.svg" alt="">
+                        <span>VS Code</span>
+                    </div>
+                    <div>
+                        <img src="src/tool/tool-photoshop.svg" alt="">
+                        <span>Photoshop</span>
+                        
+                    </div>
+                    <div>
+                        <img src="src/tool/tool-todoist.svg" alt="">
+                        <span>Todoist</span>
+                        
+                    </div>
+                    <div>
+                        <img src="src/tool/tool-notion.png" alt="">
+                        <span>Notion</span>
+                    </div>
+                    <div>
+                        <img src="src/tool/tool-calendar.svg" alt="">
+                        <span>Calendar</span>
+                    </div>
+                    <div>
+                        <img src="src/tool/tool-mail.svg" alt="">
+                        <span>Mail</span>
+                    </div>
                 </div>
                 <div id="center-box">
                     <div id="link-area">
@@ -138,14 +235,15 @@
             </div>
             <div id="right-box">
                 <div class="item-box">
-                    <button onclick="window.location.reload(true)">새로고침</button>
                 </div>
                 <div class="item-box">
                 </div>
                 <div class="footer">
                 </div>
             </div>
-           
+            <div class="footer">
+                <button onclick="window.location.reload(true)">새로고침</button>
+            </div>
         <!-- <a href="run-lol:\\\">롤</a> -->
         </div>
     </body>
