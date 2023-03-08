@@ -4,11 +4,19 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build:win32": "electron-builder --win portable --ia32",
+    "build:win64": "electron-builder --win portable --x64"
   },
-  "author": "",
+  "repository": "https://github.com/electron/electron-quick-start",
+  "author": "Noly-Poly",
   "license": "ISC",
   "devDependencies": {
     "electron": "^23.1.2"
+  },
+  "build": {
+    "win": {
+      "icon": "src/app/NP-Launcher.png"
+    }
   }
 }
