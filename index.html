@@ -204,13 +204,13 @@
                 display: inline-flex;
                 justify-content: space-evenly;
             }
-            #link-area > div > img{
+            #link-area > div > a > img{
                 width: 20px;
                 height: 20px;
                 padding:5px;
                 margin: 10px 0px;
             }
-            #link-area > div > img:hover{
+            #link-area > div > a > img:hover{
                 width: 20px;
                 height: 20px;
                 background:#dcdcdc;
@@ -261,7 +261,7 @@
                 /* filter: grayscale(100%); */
 
             }
-            #tool-area > div > span{
+            #tool-area > div > span > a{
                 font-size: 10px;
                 font-weight: 700;
                 color: #868686;
@@ -302,7 +302,7 @@
                 <div class="item-box" id="game-area">
                     <div>
                         <img src="src/game/game-lol.png" alt="롤">
-                        <span><a href=""><a href="">리그 오브 레전드</a></a></span>
+                        <span class="launcher" data-link="C:\Riot Games\Riot Client\RiotClientServices.exe">리그 오브 레전드</span>
                     </div>
                     <div>
                         <img src="src/game/game-maple.png" alt="메이플">
@@ -409,11 +409,12 @@
     </body>
     <script>
         function enterkey() {
-        if (window.event.keyCode == 13) {
-            let keyword = document.getElementById('input-search').value;
-            let url = 'https://www.google.com/search?q=' + keyword;
-            location.href = url;
+            if (window.event.keyCode == 13) {
+                let keyword = document.getElementById('input-search').value;
+                let url = 'https://www.google.com/search?q=' + keyword;
+                location.href = url;
+            }
         }
-}
     </script>
+    <script type="module" src="./renderer.js"></script>
 </html>
