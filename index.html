@@ -3,12 +3,11 @@
     <head>
         <title>Hello, World!</title>
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
 
             html,
             body {
-                background: rgba(0, 0, 0, 0);
-                font-family: 'Gowun Batang', serif;
+                font-family: 'Noto Sans KR', sans-serif;
                 font-size: 14px;
                 font-weight: 700;
             }
@@ -20,20 +19,25 @@
                 bottom: 20px;
                 width: 100%;
                 height: 400px;
-                background: rgba(0, 0, 0, 0.8);
+                background: #1c1c1c;
+                /* background: rgba(29, 27, 34, 0.9); */
+                box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
             }
 
             #left-box{
                 position: relative;
                 width: 820px;
                 height: 320px;;
-                margin-left: 40px;
-                margin-top: 40px;
+                padding: 40px;
+
             }
             #right-box{
                 position: relative;
                 width: 240px;
-                background: #777;
+                height: 390px;
+                background: #262626;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
             }
             #center-box{
                 display: inline-flex;
@@ -44,16 +48,17 @@
                 width: 80%;
                 margin: 0 10%;
                 height: 50px;
+                z-index: 10;
+
             }
             #center-box > div{
-                width: 25%;
+                width: 30%;
                 height: 100%;
-                background: #fff;
+                background: #262626;
                 border-radius: 12px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            }
+                box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);            }
             #center-box > div:last-child{
-                width: 70%;
+                width: 68%;
             }
             .item-box{
                 display: inline-flex;
@@ -65,29 +70,67 @@
                 position: relative;
                 width: 160px;
                 height: 180px;
-                border-radius: 25px;
             }
+            
             #game-area > div > img{
+                position: relative;
                 width: 160px;
                 height: 180px;
-                border-radius: 25px;
+                /* filter: grayscale(100%); */
+                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+            }
+            #game-area > div::before{
+                content: ' ';
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                opacity: 0.6;
+                background: #1c1c1c;
             }
             #game-area > div > span{
                 position: absolute;
-                bottom: 30px;
-                left:20px;
-                font-size: 18px;
+                width:160px;
+                text-align: center;
+                bottom: 75px;
+                left:0;
+                font-size: 20px;
                 font-weight: 700;
-                color:#fff;
-                background: rgba(0, 0, 0, 0.6);
+                color:#dcdcdc;
+                z-index: 2;
             }
-            .footer{
+            #footer{
                 position: fixed;
+                display: inline-flex;
+                justify-items: flex-start;
+                justify-content: space-between;
                 width: 1142px;
-                height: 40px;
+                height: 32px;
                 left: 8px;
                 bottom: 20px;
-                background: #222;
+                background: #262626;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+                padding-top:8px;
+            }
+            #footer > div {
+                display: inline-flex;
+            }
+            #footer-right{
+                justify-content: flex-end;
+                padding-right: 20px;
+            }
+            #footer > div > div > a{
+                padding: 4px 10px 6px 10px;
+                font-size: 10px;
+                color: #868686;
+                background: #333;
+                margin-left:  20px;
+                border-radius: 10px;
+                text-decoration: underline;
             }
             #search-area{
                 display: inline-flex;
@@ -97,19 +140,23 @@
             }
 
             #search-area > div:first-child{
-                width: 100px;
+                width: 80px;
                 height: 30px;
-                background: #000;
+                background: #868686;
                 border-radius: 10px;
                 margin-top:10px;
                 vertical-align: middle;
                 line-height: 30px;
-                color:#fff;
+                color:#262626;
                 text-align: center;
+                font-weight: 900;
+                font-size: 12px;
             }
             #input-search{
                 border: none;
-                border-bottom: 1px solid #000;
+                background: none;
+                border-bottom: 1px solid #868686;
+                color: #868686;
                 width: 250px;
             }
             #icon-search{
@@ -117,45 +164,76 @@
                 height: 30px;
                 margin-top: 10px;
             }
-            #icon-search path{
-                fill: #555;
-            }
             #link-area{
                 display: inline-flex;
-                justify-content: space-around;
+                justify-content: space-evenly;
             }
             #link-area > div > img{
                 width: 20px;
                 height: 20px;
                 margin: 15px 0px;
             }
+            #link-area .vertical-divider{
+                width: 0px;
+                height: 20px;
+                border-right: 1px solid #868686;
+                margin-top:15px;
+            }
             #tool-area{
                 margin-top:40px;
+                margin-left:5%;
+                width:90%;
                 height: 80px;
             }
             #tool-area > div{
                 width: 80px;
                 height: 80px;
                 text-align: center;
-                background: #000;
                 border-radius: 10px;
+                
             }
             #tool-area > div > img{
                 display: block;
                 width: 40px;
                 height: 40px;
                 padding: 5px;
-                margin-top: 3px;
+                margin-top: 5px;
                 margin-left: 15px;
                 border-radius: 10px;
-                background: #000;
+                background: #262626;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+                /* filter: grayscale(100%); */
+
             }
             #tool-area > div > span{
-                font-size: 10pt;
+                font-size: 10px;
                 font-weight: 700;
-                color: #fff;
+                color: #868686;
                 margin-top:5px;
             }
+            .list-view{
+                height: 150px;
+                padding: 20px;
+                flex-direction: column;
+                justify-content: flex-start;
+                border-bottom: 1px solid #868686;
+            }
+
+            .list-view > div:not(:first-child){
+                font-size: 12px;
+                font-weight: 400;
+                color:#868686;
+                text-decoration: underline;
+                margin-bottom: 6px;
+            }
+            .list-view > div:first-child{
+                font-size: 20px;
+                font-weight: 900;
+                color:#868686;
+                margin-bottom: 10px;
+            }
+
           </style>
     </head>
     <body>
@@ -216,9 +294,11 @@
                         <div>
                             <img src="src/icon/icon-news.svg" alt="뉴스">
                         </div>
+                        <div class="vertical-divider"></div>
                         <div>
                             <img src="src/icon/icon-dictionary.svg" alt="사전">
                         </div>
+                        <div class="vertical-divider"></div>
                         <div>
                             <img src="src/icon/icon-map.svg" alt="지도">
                         </div>
@@ -234,15 +314,38 @@
 
             </div>
             <div id="right-box">
-                <div class="item-box">
+                <div class="item-box list-view">
+                    <div>Folder</div>
+                    <div><a>내컴퓨터</a></div>
+                    <div><a>바탕화면</a></div>
+                    <div><a>다운로드</a></div>
+                    <div><a>카카오톡 받은 파일</a></div>
+                    <div><a>배경화면 보관함</a></div>
                 </div>
-                <div class="item-box">
+                <div class="item-box list-view">
+                    <div>Utillity</div>
+                    <div><a>카카오톡</a></div>
+                    <div><a>디스코드</a></div>
+                    <div><a>Blitz</a></div>
                 </div>
                 <div class="footer">
                 </div>
             </div>
-            <div class="footer">
-                <button onclick="window.location.reload(true)">새로고침</button>
+            <div id="footer">
+                <div id="footer-left">
+                    <div><a>시스템 종료</a></div>
+                    <div><a>시스템 재부팅</a></div>
+                    <div><a>밝기 설정</a></div>
+                    <div><a>마우스 설정</a></div>
+                    <div><a onclick="window.location.reload(true)">런쳐 재부팅</a></div>
+                </div>
+                
+                <div id="footer-right">
+                    <div><a>계산기</a></div>
+                    <div><a>메모장</a></div>
+                    <div><a>캡처도구</a></div>
+                </div>
+                
             </div>
         <!-- <a href="run-lol:\\\">롤</a> -->
         </div>
