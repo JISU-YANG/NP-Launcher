@@ -2,13 +2,16 @@ const { app, BrowserWindow } = require('electron');
 const path = require('path');
  
 const createWindow = () => {
+    const displayWidth = require('electron').screen.getPrimaryDisplay().size.width;
+
     const win = new BrowserWindow({
         width: 1150,
-        height: 1050,
+        height: 420,
         frame: false,
         transparent: true,
         resizable: false,
-        center: true,
+        x: (displayWidth - 1150) / 2,
+        y: 620,
         webPreferences: { preload: path.join(__dirname, 'preload.js') }
     });
     
