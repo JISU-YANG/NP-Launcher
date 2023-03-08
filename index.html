@@ -143,6 +143,7 @@
                 margin-left:  20px;
                 border-radius: 10px;
                 text-decoration: underline;
+                cursor: pointer;
             }
             #search-area{
                 display: inline-flex;
@@ -372,11 +373,7 @@
                     <div id="search-area">
                         <div>Google</div>
                         <div class="vertical-divider"></div>
-
-                        <div><input type="text" id="input-search" placeholder="Type to search"></div>
-                        <!-- <div>
-                            <img id="icon-search" src="src/icon/icon-search.svg" alt="검색">
-                        </div> -->
+                        <div><input type="text" id="input-search" onkeyup="enterkey()" placeholder="Type to search"></div>
                     </div>
                 </div>
 
@@ -409,4 +406,13 @@
         <!-- <a href="run-lol:\\\">롤</a> -->
         </div>
     </body>
+    <script>
+        function enterkey() {
+        if (window.event.keyCode == 13) {
+            let keyword = document.getElementById('input-search').value;
+            let url = 'https://www.google.com/search?q=' + keyword;
+            location.href = url;
+        }
+}
+    </script>
 </html>
