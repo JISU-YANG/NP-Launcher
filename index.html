@@ -56,6 +56,7 @@
                 border-radius: 10px;
                 box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);            
                 background: #1c1c1c;
+                opacity: 0.96;
             }
             #center-box > div:last-child{
                 width: 68%;
@@ -69,8 +70,8 @@
 
             .game-img{
                 position: relative;
-                width: 160px;
-                height: 140px;
+                width: 100%;
+                height: 100%;
                 /* filter: grayscale(100%); */
                 transition: 0.2s all ease;
                 object-fit:cover;
@@ -79,8 +80,11 @@
 
             #game-area > div{
                 position: relative;
-                width: 160px;
-                height: 140px;
+                width: 100px;
+                height: 120px;
+                padding: 10px;
+                background: #333;
+                border-radius: 10px;
             }
             
             
@@ -99,22 +103,22 @@
 
             .game-name{
                 position: absolute;
-                width:160px;
-                padding: 56px 0;
+                width:120px;
+                padding: 58px 0;
                 text-align: center;
                 bottom: 0px;
                 left:0;
-                font-size: 20px;
+                font-size: 16px;
                 font-weight: 700;
-                background: rgba(38, 38, 38,0.9);
                 z-index: 2;
-                opacity: 0;
                 border-radius: 10px;
                 text-decoration: underline;
-                color:#dcdcdc
+                opacity: 0;
             } 
             .game-name:hover{
                 transition: 0.2s all ease;
+                background: rgba(38, 38, 38,0.9);
+                color:#dcdcdc;
                 opacity: 1;
                 cursor: pointer;
             }
@@ -133,21 +137,40 @@
             }
             #footer > div {
                 display: inline-flex;
+                justify-content: space-between;
+            }
+            #footer-left{
+                width: 900px;
+                display: inline-flex;
+
+            }
+            #footer-left > div{
+                display: inline-flex;
+                justify-content: space-evenly;
             }
             #footer-right{
-                justify-content: flex-end;
-                padding-right: 20px;
+                width: 200px;
+                padding-right: 16px;
             }
-            #footer > div > div > a{
+            #footer-right > div{
+                font-weight: 700;
+                color:#262626;
+            }
+            #footer-right > div:last-child{
+                font-weight: 900;
+                color:#333;
+            }
+            .footer-btn{
                 padding: 4px 10px 6px 10px;
                 font-size: 10px;
                 color: #868686;
                 background: #262626;
-                margin-left:  20px;
-                border-radius: 10px;
+                margin-left:  10px;
+                margin-top:0px;
                 text-decoration: underline;
                 cursor: pointer;
             }
+
             #search-area{
                 display: inline-flex;
                 justify-content: space-around;
@@ -182,10 +205,7 @@
                 font-size: 12px;
 
             }
-            .bg-pattern{
-                background: linear-gradient(45deg, #262626 25%, #333 0, #333 50%, #262626 0, #262626 75%, #333 0 );
-                background-size:5px 5px
-            }
+
             #input-search{
                 border: none;
                 background: none;
@@ -272,42 +292,134 @@
                 text-decoration: none;
             }
             .list-view{
-                height: 360px;
-                padding: 20px;
+                display: inline-flex;
+                height: 290px;
+                padding: 40px;
                 flex-direction: column;
-                justify-content: flex-start;
+                justify-content: space-between;
                 background: #262626;
             }
-            .list-view > div{
-                margin-bottom: 20px;
-            }
-            .list-view > div > a{
-                font-size: 20px;
-                font-weight: 900;
+            .list-item{
+                width: 130px;
+                padding: 8px 10px 10px 10px;
+                margin-bottom: 12px;
+                font-size: 12px;
+                font-weight: 700;
                 color:#868686;
+                border-radius: 10px;
                 /* text-decoration: underline; */
-                padding-left: 5px;
                 transition: 0.2s all ease;
-
+                background: linear-gradient(45deg, #262626 25%, #333 0, #333 50%, #262626 0, #262626 75%, #333 0 );
+                background-size:5px 5px
             }
-            .list-view > div > a:hover{
-                font-size: 20px;
-                font-weight: 900;
+            .list-item:hover{
                 color: #dcdcdc;
                 text-decoration: underline;
                 transition: 0.2s all ease;
                 cursor: pointer;
+                background: linear-gradient(45deg, #262626 25%, #1c1c1c 0, #1c1c1c 50%, #262626 0, #262626 75%, #1c1c1c 0 );
+                background-size:5px 5px
+
             }
-            #path-editor{
+            .list-view > div{
+                justify-content: flex-start;
+            }
+            #editor{
                 display: none;
                 position: fixed;
-                width: 380px;
-                height: 280px;
-                left: 320px;
-                top: 30px;
+                justify-content: space-between;
+                flex-direction: column;
+                width: 1100px;
+                height: 360px;
+                left: 8px;
+                top: 0;
                 padding: 20px;
                 background: #1c1c1c;
                 transition: 0.2s all ease;
+                opacity: 0.96;
+            }
+            #setting-row{
+                display: inline-flex;
+                justify-content: space-between;
+            }
+            .setting-col{
+                display: inline-flex;
+                flex-direction: column;
+            }
+            .setting-col > div:first-child{
+                font-size: 20px;
+                color:#dcdcdc;
+                margin-bottom: 20px;
+            }
+            .gallery-item, .icon-item{
+                display: inline-flex;
+                justify-content: space-between;
+                width: 280px;
+                height: 20px;
+                color: #868686;
+                margin-bottom: 10px;
+                font-size: 10px;
+                padding: 6px 0px 0 10px;
+                border-left: 2px solid #dcdcdc;
+            }
+            .folder-item{
+                display: inline-flex;
+                justify-content: space-between;
+                width: 200px;
+                height: 20px;
+                color: #868686;
+                margin-bottom: 10px;
+                font-size: 10px;
+                padding: 6px 0px 0 10px;
+                border-left: 2px solid #dcdcdc;
+            }
+            .gallery-item > div > input,
+            .icon-item > div > input,
+            .folder-item > div > input{
+                background: none;
+                border: none;
+                width: 80px;
+                border-bottom: 1px solid #868686;
+                font-size: 10px;
+                font-family: 'Noto Sans KR', sans-serif;
+                font-weight: 700;
+                color: #dcdcdc;
+            }
+            .gallery-item > div > input::placeholder,
+            .icon-item > div > input::placeholder,
+            .folder-item > div > input::placeholder{
+                font-family: 'Noto Sans KR', sans-serif;
+                font-size: 8pt;
+                font-weight: 700;
+                color: #868686;
+            }
+            select{
+                font-family: 'Noto Sans KR', sans-serif;
+                font-size: 8pt;
+                font-weight: 700;
+                -moz-appearance: none;
+                -webkit-appearance: none;
+                appearance: none;
+                background: #1c1c1c;
+                border: none;
+                border-bottom: 1px solid #868686;
+                color:#868686;
+                padding-bottom: 1px;
+            }
+            select:focus {
+                background: #1c1c1c;
+                outline: none;
+                border: none;
+                border-bottom: 1px solid #868686;
+            }
+            input[type="file"]{
+                display: none;
+            }
+            label{
+                font-size: 8pt;
+                border-bottom: 1px solid #868686;
+                padding: 1px;
+
             }
             #btn-preference-cancle, #btn-preference-save{
                 cursor: pointer;
@@ -350,6 +462,10 @@
                             <img class="game-img" src="src/game/game-mabinogi.png" alt="마비노기">
                             <span class="game-name">마비노기</span>
                         </a>
+                    </div>
+                    <div class="launcher">
+                        <img class="game-img" src="src/game/game-arknights.png" alt="명일방주">
+                        <span class="game-name">명일방주</span>
                     </div>
                     <div class="launcher">
                         <img class="game-img" src="src/game/game-arknights.png" alt="명일방주">
@@ -420,96 +536,158 @@
             </div>
             <div id="right-box">
                 <div class="item-box list-view">
-                    <div class="bg-pattern"><a class="launcher-basic" data-link="C:\Users\jisuyang\Desktop">바탕화면</a></div>
-                    <div class="bg-pattern"><a class="launcher-basic" data-link="C:\Users\jisuyang\Downloads">다운로드</a></div>
-                    <div class="bg-pattern"><a class="launcher-basic" data-link="C:\Users\jisuyang\Documents\카카오톡 받은 파일">카카오톡 받은 파일</a></div>
-                    <div class="bg-pattern"><a class="launcher-basic" data-link="C:\Users\jisuyang\Pictures\wallpaper">배경화면 보관함</a></div>
+                    <div>
+                        <div class="launcher-basic list-item" data-link="C:\Users\jisuyang\Desktop">바탕화면</div>
+                        <div class="launcher-basic list-item" data-link="C:\Users\jisuyang\Downloads">다운로드</div>
+                        <div class="launcher-basic list-item" data-link="C:\Users\jisuyang\Documents\카카오톡 받은 파일">카카오톡 받은 파일</div>
+                        <div class="launcher-basic list-item" data-link="C:\Users\jisuyang\Pictures\wallpaper">배경화면 보관함</div>
+
+                    </div>
+                    <div>
+                        <div id="btn-preference" class="list-item">환경설정</div>
+                    </div>
+                    
                 </div>
             </div>
             <div id="footer">
                 <div id="footer-left">
-                    <div><a class="launcher-basic" data-link="shutdown">시스템 종료</a></div>
-                    <div><a class="launcher-basic" data-link="reboot">시스템 재부팅</a></div>
+                    <div>
+                        <div><a class="launcher-basic footer-btn" data-link="shutdown">시스템 종료</a></div>
+                        <div><a class="launcher-basic footer-btn" data-link="reboot">시스템 재부팅</a></div>
+                    </div>
+
                     <!--https://learn.microsoft.com/en-us/windows/uwp/launch-resume/launch-settings-app-->
-                    <div><a href="ms-settings:easeofaccess-colorfilter-bluelightlink">밝기</a></div>
-                    <div><a href="ms-settings:sound">소리</a></div>
-                    <div><a href="ms-settings:mousetouchpad">마우스</a></div>
-                    <div><a onclick="window.location.reload(true)">Reload</a></div>
-                    <div><a id="btn-preference">Path</a></div>
+                    <div>
+                        <div><a class="footer-btn" href="ms-settings:easeofaccess-colorfilter-bluelightlink">밝기</a></div>
+                        <div><a class="footer-btn" href="ms-settings:sound">소리</a></div>
+                        <div><a class="footer-btn" href="ms-settings:mousetouchpad">마우스</a></div>
+                    </div>
+
                 </div>
                 
                 <div id="footer-right">
-                    <div><a class="launcher-basic" data-link="C:\Windows\System32\calc.exe">계산기</a></div>
-                    <div><a class="launcher-basic" data-link="C:\Windows\System32\notepad.exe">메모장</a></div>
-                    <div><a class="launcher-basic" data-link="C:\Windows\System32\SnippingTool.exe">캡처도구</a></div>
+                    <div>Noly-Poly</div>
+                    <div>|</div>
+                    <div>NP Launcher</div>
                 </div>
                 
             </div>
         </div>
-        <div id="path-editor">
-            <div class="path-row">
-                <div class="path-title">
+        <div id="editor">
+             <!-- <div class="path-title">
                     리그오브레전드
                 </div>
                 <div>
                     <input class="path-input" type="text">
+                </div> -->
+            <div id="setting-row">
+<!--                 
+               <div class="setting-col">
+                     <div>갤러리</div>
+                     <div class="gallery-item">
+                        <div>1: </div>
+                        <div>
+                            <select name="gallery-type-item1" id="gallery-type-item1">
+                                <option value="none">none</option>
+                                <option value="url">url</option>
+                                <option value="exe">exe</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="text" name="gallery-name-item1" placeholder="title">
+                        </div>
+                        <div>
+                            <input type="text" name="gallery-link-item1" placeholder="link">
+                        </div>
+                        <div>
+                            <input type="file" name="gallery-img-item1">
+                        </div>
+                     </div>
+                     <div class="gallery-item">
+                        <div>2: </div>
+                        <div>
+                            <select name="gallery-type-item1" id="gallery-type-item1">
+                                <option value="none">none</option>
+                                <option value="url">url</option>
+                                <option value="exe">exe</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="text" name="gallery-name-item1">
+                        </div>
+                        <div>
+                            <input type="text" name="gallery-link-item1">
+                        </div>
+                        <div>
+                            <input type="file" name="gallery-img-item1">
+                        </div>
+                     </div>
+                    
+               </div>
+               <div class="setting-col">
+                <div>아이콘</div>
+                <div class="icon-item">
+                   <div>1: </div>
+                   <div>
+                       <select name="icon-type-item1" id="icon-type-item1">
+                           <option value="none">none</option>
+                           <option value="url">url</option>
+                           <option value="exe">exe</option>
+                       </select>
+                   </div>
+                   <div>
+                       <input type="text" name="icon-name-item1" placeholder="title">
+                   </div>
+                   <div>
+                       <input type="text" name="icon-link-item1" placeholder="link">
+                   </div>
+                   <div>
+                       <input type="file" name="icon-img-item1">
+                   </div>
                 </div>
-            </div>
-            <div class="path-row">
-                <div class="path-title">
-                    카트라이더
+                <div class="icon-item">
+                   <div>2: </div>
+                   <div>
+                       <select name="icon-type-item1" id="icon-type-item1">
+                           <option value="none">none</option>
+                           <option value="url">url</option>
+                           <option value="exe">exe</option>
+                       </select>
+                   </div>
+                   <div>
+                       <input type="text" name="icon-name-item1">
+                   </div>
+                   <div>
+                       <input type="text" name="icon-link-item1">
+                   </div>
+                   <div>
+                       <input type="file" name="icon-img-item1">
+                   </div>
                 </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div>
-            </div>
-            <div class="path-row">
-                <div class="path-title">
-                    명일방주
-                </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div>
-            </div>
-            <div class="path-row">
-                <div class="path-title">
-                    VSCode
-                </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div>
-            </div>
-            <div class="path-row">
-                <div class="path-title">
-                    Photoshop
-                </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div>
-            </div>
-            <div class="path-row">
-                <div class="path-title">
-                    KakaoTalk
-                </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div>
-            </div>
-            <div class="path-row">
-                <div class="path-title">
-                    Discord
-                </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div>
-            </div>
-            <div class="path-row">
-                <div class="path-title">
-                    Blitz
-                </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div>
+               </div>
+               <div class="setting-col">
+                <div class="setting-col">
+                    <div>폴더</div>
+                    <div class="folder-item">
+                       <div>1: </div>
+                       <div>
+                           <input type="text" name="folder-name-item1" placeholder="folder name">
+                       </div>
+                       <div>
+                           <input type="text" name="folder-link-item1" placeholder="folder link">
+                       </div>
+                    </div>
+                    <div class="folder-item">
+                       <div>2: </div>
+                       <div>
+                           <input type="text" name="folder-name-item1">
+                       </div>
+                       <div>
+                           <input type="text" name="folder-link-item1">
+                       </div>
+                    </div> -->
+               <!-- </div> -->
+            <!-- </div> -->
             </div>
             <div class="btn-row">
                 <div id="btn-preference-cancle">취소</div>
@@ -525,6 +703,54 @@
                 location.href = url;
             }
         }
+    </script>
+    <script>
+        let settingTitle = ['갤러리', '아이콘', '폴더'];
+        let settingType = ['gallery', 'icon', 'folder'];
+        let settingMax = [6,8,5];
+        function drawSetting(){
+            let htmlSetting = '';
+
+            for (let i = 0; i < settingTitle.length; i++) {
+                htmlSetting += 
+                    '<div class="setting-col">' +
+                        '<div>' + settingTitle[i] + '</div>';
+                for (let j = 0; j < settingMax[i]; j++) {
+                    htmlSetting += 
+                    '<div class="' + settingType[i] + '-item">'+
+                        '<div>'+(j+1)+': </div>';
+                        if(i!=settingTitle.length-1){
+                            htmlSetting += 
+                                '<div>'+
+                                    '<select name="' + settingType[i] + '-type-item-'+j+'" id="' + settingType[i] + '-type-item-'+j+'">'+
+                                        '<option value="type" selected="selected">종류</option>'+
+                                        '<option value="url">url</option>'+
+                                        '<option value="exe">exe</option>'+
+                                    '</select>'+
+                                '</div>';
+                        }
+                    htmlSetting += 
+                        '<div>'+
+                            '<input type="text" name="' + settingType[i] + '-name-item-'+j+'" placeholder="이름">'+
+                        '</div>'+
+                        '<div>'+
+                            '<input type="text" name="' + settingType[i] + '-link-item-'+j+'" placeholder="경로">'+
+                        '</div>';
+                        if(i!=settingTitle.length-1){
+                            htmlSetting += 
+                                '<div>'+
+                                    '<label for="'+ settingType[i] +'-img-item-'+j+'">이미지</label>' +
+                                    '<input type="file" id="' + settingType[i] + '-img-item-'+j+'" name="' + settingType[i] + '-img-item-'+j+'">'+
+                                '</div>';
+                        }
+                        htmlSetting += '</div>';
+                }
+                htmlSetting += '</div>';
+            }
+            
+            document.getElementById('setting-row').innerHTML = htmlSetting;
+        }
+        drawSetting();
     </script>
     <script type="module" src="./renderer.js"></script>
     <script type="module" src="./preference.js"></script>
