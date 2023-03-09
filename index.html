@@ -73,7 +73,7 @@
                 position: relative;
                 width: 160px;
                 height: 140px;
-                /* filter: grayscale(100%); */
+                filter: grayscale(100%);
                 transition: 0.2s all ease;
                 object-fit:cover;
                 border-radius: 10px;
@@ -93,7 +93,7 @@
                 background: #1c1c1c;
             }
 
-            #game-area > div > span{
+            #game-area > div > span, #game-area > div > span> a{
                 position: absolute;
                 width:160px;
                 padding: 56px 0;
@@ -107,9 +107,8 @@
                 opacity: 0;
                 border-radius: 10px;
                 text-decoration: underline;
-            }
-            #game-area > div > span > a{
                 color:#dcdcdc
+
             }
             #game-area > div > span:hover{
                 transition: 0.2s all ease;
@@ -204,13 +203,13 @@
                 display: inline-flex;
                 justify-content: space-evenly;
             }
-            #link-area > div > a > img{
+            #link-area > div img{
                 width: 20px;
                 height: 20px;
                 padding:5px;
                 margin: 10px 0px;
             }
-            #link-area > div > a > img:hover{
+            #link-area > div img:hover{
                 width: 20px;
                 height: 20px;
                 background:#dcdcdc;
@@ -245,7 +244,7 @@
                 margin-left: 15px;
                 border-radius: 10px;
                 transition: 0.2s all ease;
-                filter: grayscale(20%);
+                filter: grayscale(100%);
 
             }
             #tool-area > div > img:hover{
@@ -258,14 +257,15 @@
                 border-radius: 10px;
                 transition: 0.2s all ease;
                 cursor: pointer;
-                /* filter: grayscale(100%); */
+                filter: grayscale(0%);
 
             }
-            #tool-area > div > span > a{
+            #tool-area > div > span, #tool-area > div > span > a{
                 font-size: 10px;
                 font-weight: 700;
                 color: #868686;
                 margin-top:5px;
+                text-decoration: none;
             }
             .list-view{
                 height: 360px;
@@ -274,18 +274,19 @@
                 justify-content: flex-start;
                 background: #262626;
             }
-
             .list-view > div{
+                margin-bottom: 20px;
+            }
+            .list-view > div > a{
                 font-size: 20px;
                 font-weight: 900;
                 color:#868686;
                 /* text-decoration: underline; */
                 padding-left: 5px;
-                margin-bottom: 20px;
                 transition: 0.2s all ease;
 
             }
-            .list-view > div:hover{
+            .list-view > div > a:hover{
                 font-size: 20px;
                 font-weight: 900;
                 color: #dcdcdc;
@@ -407,27 +408,28 @@
             </div>
             <div id="right-box">
                 <div class="item-box list-view">
-                    <div class="bg-pattern"><a>내컴퓨터</a></div>
-                    <div class="bg-pattern"><a>바탕화면</a></div>
-                    <div class="bg-pattern"><a>다운로드</a></div>
-                    <div class="bg-pattern"><a>카카오톡 받은 파일</a></div>
-                    <div class="bg-pattern"><a>배경화면 보관함</a></div>
+                    <div class="bg-pattern"><a class="launcher-basic" data-link="C:\Users\jisuyang\Desktop">바탕화면</a></div>
+                    <div class="bg-pattern"><a class="launcher-basic" data-link="C:\Users\jisuyang\Downloads">다운로드</a></div>
+                    <div class="bg-pattern"><a class="launcher-basic" data-link="C:\Users\jisuyang\Documents\카카오톡 받은 파일">카카오톡 받은 파일</a></div>
+                    <div class="bg-pattern"><a class="launcher-basic" data-link="C:\Users\jisuyang\Pictures\wallpaper">배경화면 보관함</a></div>
                 </div>
             </div>
             <div id="footer">
                 <div id="footer-left">
-                    <div><a>시스템 종료</a></div>
-                    <div><a>시스템 재부팅</a></div>
-                    <div><a>밝기 설정</a></div>
-                    <div><a>마우스 설정</a></div>
+                    <div><a class="launcher-basic" data-link="shutdown">시스템 종료</a></div>
+                    <div><a class="launcher-basic" data-link="reboot">시스템 재부팅</a></div>
+                    <!--https://learn.microsoft.com/en-us/windows/uwp/launch-resume/launch-settings-app-->
+                    <div><a href="ms-settings:easeofaccess-colorfilter-bluelightlink">밝기</a></div>
+                    <div><a href="ms-settings:sound">소리</a></div>
+                    <div><a href="ms-settings:mousetouchpad">마우스</a></div>
                     <div><a onclick="window.location.reload(true)">Reload</a></div>
                     <div><a id="btn-preference">Path</a></div>
                 </div>
                 
                 <div id="footer-right">
-                    <div><a>계산기</a></div>
-                    <div><a>메모장</a></div>
-                    <div><a>캡처도구</a></div>
+                    <div><a class="launcher-basic" data-link="C:\Windows\System32\calc.exe">계산기</a></div>
+                    <div><a class="launcher-basic" data-link="C:\Windows\System32\notepad.exe">메모장</a></div>
+                    <div><a class="launcher-basic" data-link="C:\Windows\System32\SnippingTool.exe">캡처도구</a></div>
                 </div>
                 
             </div>

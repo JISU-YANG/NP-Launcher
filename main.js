@@ -3,6 +3,7 @@ const path = require('path');
 const ipcMain = require('electron').ipcMain;
 const { contextIsolated } = require('process');
 const Store = require('electron-store');
+const computer = require('electron-shutdown-command');
 
 Store.initRenderer();
 
@@ -57,16 +58,32 @@ app.whenReady().then(() => {
     });
 
     ipcMain.on('run',(event, argument) =>{
-        const { execFile } = require('node:child_process');
-        const child = execFile(argument, (error, stdout, stderr) => {
-        if (error) {
-            throw error;
-        }
-        console.log(stdout);
-        });
+        console.log(argument.substr(argument.length-1,1));
 
-        console.log(argument);
+        // execFile는 default로 shall을 생성하지 않아 더 효율적이다.
+        if(argument.substr(argument.length-3,3) == "exe"){
+            const { execFile } = require('node:child_process');
+            const child = execFile(argument, (error, stdout, stderr) => {
+            if (error) {
+                throw error;
+            }
+            console.log(stdout);
+            });
+ 
+        }else if(argument == 'shutdown'){
+            computer.shutdown();
+        }else if(argument == 'reboot'){
+            computer.reboot();
+        } else{
+            const {shell} = require('electron') 
+            shell.openPath(argument)
+        }
+       
+
         // event.sender.send('result',argument);
+
+        // var ws = require('windows-shortcuts');
+        // ws.query(argument, console.log);
     });
 });
  

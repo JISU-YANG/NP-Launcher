@@ -18,5 +18,10 @@
     "win": {
       "icon": "src/app/NP-Launcher.png"
     }
+  },
+  "dependencies": {
+    "electron-shutdown-command": "^2.0.1",
+    "electron-store": "^8.1.0",
+    "windows-shortcuts": "^0.1.6"
   }
 }
