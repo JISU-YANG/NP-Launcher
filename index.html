@@ -11,6 +11,9 @@
                 font-size: 14px;
                 font-weight: 700;
             }
+            a{
+                text-decoration: none;
+            }
             #container{
                 position: fixed;
                 display: inline-flex;
@@ -63,23 +66,24 @@
                 width: 100%;
                 height: 158px;
             }
+
+            .game-img{
+                position: relative;
+                width: 160px;
+                height: 140px;
+                /* filter: grayscale(100%); */
+                transition: 0.2s all ease;
+                object-fit:cover;
+                border-radius: 10px;
+            }
+
             #game-area > div{
                 position: relative;
                 width: 160px;
                 height: 140px;
             }
             
-            #game-area > div > img{
-                position: relative;
-                width: 160px;
-                height: 140px;
-                filter: grayscale(100%);
-                transition: 0.2s all ease;
-                object-fit:cover;
-                border-radius: 10px;
-                
-
-            }
+            
             #game-area > div::before{
                 content: ' ';
                 display: block;
@@ -93,7 +97,7 @@
                 background: #1c1c1c;
             }
 
-            #game-area > div > span, #game-area > div > span> a{
+            .game-name{
                 position: absolute;
                 width:160px;
                 padding: 56px 0;
@@ -108,9 +112,8 @@
                 border-radius: 10px;
                 text-decoration: underline;
                 color:#dcdcdc
-
-            }
-            #game-area > div > span:hover{
+            } 
+            .game-name:hover{
                 transition: 0.2s all ease;
                 opacity: 1;
                 cursor: pointer;
@@ -235,7 +238,7 @@
                 border-radius: 10px;
                 background: #262626;
             }
-            #tool-area > div > img{
+            .tool-img{
                 display: block;
                 width: 40px;
                 height: 40px;
@@ -247,7 +250,7 @@
                 filter: grayscale(100%);
 
             }
-            #tool-area > div > img:hover{
+            .tool-img:hover{
                 display: block;
                 width: 50px;
                 height: 50px;
@@ -260,7 +263,7 @@
                 filter: grayscale(0%);
 
             }
-            #tool-area > div > span, #tool-area > div > span > a{
+            .tool-name{
                 font-size: 10px;
                 font-weight: 700;
                 color: #868686;
@@ -327,61 +330,69 @@
         <div id="container">
             <div id="left-box">
                 <div class="item-box" id="game-area">
-                    <div>
-                        <img src="src/game/game-lol.png" alt="롤">
-                        <span class="launcher">리그 오브 레전드</span>
+                    <div class="launcher">
+                        <img class="game-img" src="src/game/game-lol.png" alt="롤">
+                        <span class="game-name">리그 오브 레전드</span>
                     </div>
                     <div>
-                        <img src="src/game/game-maple.png" alt="메이플">
-                        <span><a href="https://maplestory.nexon.com/Home/Main">메이플 스토리</a></span>
+                        <a href="https://maplestory.nexon.com/Home/Main">
+                            <img class="game-img" src="src/game/game-maple.png" alt="메이플">
+                            <span class="game-name">메이플 스토리</span>
+                        </a>
+                    </div>
+                    <div class="launcher">
+                        <img class="game-img" src="src/game/game-cartrider.png" alt="카트라이더">
+                        <span class="game-name">카트라이더</span>
                     </div>
                     <div>
-                        <img src="src/game/game-cartrider.png" alt="카트라이더">
-                        <span class="launcher">카트라이더</span>
+                        <a href="https://mabinogi.nexon.com/page/main/index.asp">
+                            <img class="game-img" src="src/game/game-mabinogi.png" alt="마비노기">
+                            <span class="game-name">마비노기</span>
+                        </a>
                     </div>
-                    <div>
-                        <img src="src/game/game-mabinogi.png" alt="마비노기">
-                        <span><a href="https://mabinogi.nexon.com/page/main/index.asp">마비노기</a></span>
-                    </div>
-                    <div>
-                        <img src="src/game/game-arknights.png" alt="명일방주">
-                        <span class="launcher"><a href="">명일방주</a></span>
+                    <div class="launcher">
+                        <img class="game-img" src="src/game/game-arknights.png" alt="명일방주">
+                        <span class="game-name">명일방주</span>
                     </div>
                 </div>
                 <div class="item-box" id="tool-area">
-                    <div>
-                        <img src="src/tool/tool-vscode.svg" alt="">
-                        <span class="launcher">VS Code</span>
+                    <div class="launcher">
+                        <img class="tool-img" src="src/tool/tool-vscode.svg" alt="">
+                        <span class="tool-name">VS Code</span>
+                    </div>
+                    <div class="launcher">
+                        <img class="tool-img" src="src/tool/tool-photoshop.svg" alt="">
+                        <span class="tool-name">Photoshop</span>
                     </div>
                     <div>
-                        <img src="src/tool/tool-photoshop.svg" alt="">
-                        <span class="launcher">Photoshop</span>
-                        
+                        <a href="https://todoist.com/">
+                            <img class="tool-img" src="src/tool/tool-todoist.svg" alt="todoist">
+                            <span class="tool-name">Todoist</span>
+                        </a>
                     </div>
                     <div>
-                        <img src="src/tool/tool-todoist.svg" alt="">
-                        <span><a href="https://todoist.com/">Todoist</a></span>
-                        
+                        <a href="https://www.notion.so/">
+                            <img class="tool-img" src="src/tool/tool-notion.png" alt="">
+                            <span class="tool-name">Notion</span>
+                        </a>
                     </div>
                     <div>
-                        <img src="src/tool/tool-notion.png" alt="">
-                        <span><a href="https://www.notion.so/">Notion</a></span>
+                        <a href="https://calendar.google.com/">
+                            <img class="tool-img" src="src/tool/tool-calendar.svg" alt="">
+                            <span class="tool-name">Calendar</span>
+                         </a>
                     </div>
-                    <div>
-                        <img src="src/tool/tool-calendar.svg" alt="">
-                        <span><a href="https://calendar.google.com/">Calendar</a></span>
+                    <div class="launcher">
+                        <img class="tool-img" src="src/tool/tool-kakaotalk.png" alt="">
+                        <span class="tool-name">Kakao Talk</span>
                     </div>
-                    <div>
-                        <img src="src/tool/tool-kakaotalk.png" alt="">
-                        <span class="launcher">Kakao Talk</span>
+                    <div class="launcher">
+                        <img class="tool-img" src="src/tool/tool-discord.png" alt="">
+                        <span class="tool-name">Discord</span>
                     </div>
-                    <div>
-                        <img src="src/tool/tool-discord.png" alt="">
-                        <span class="launcher">Discord</span>
-                    </div>
-                    <div>
-                        <img src="src/tool/tool-blitz.png" alt="">
-                        <span class="launcher">Blitz</span>
+                    <div class="launcher">
+                        <img class="tool-img" src="src/tool/tool-blitz.png" alt="">
+                        <span class="tool-name">Blitz</span>
                     </div>
                 </div>
                 <div id="center-box">

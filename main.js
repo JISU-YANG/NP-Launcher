@@ -58,7 +58,7 @@ app.whenReady().then(() => {
     });
 
     ipcMain.on('run',(event, argument) =>{
-        console.log(argument.substr(argument.length-1,1));
+        console.log(argument);
 
         // execFile는 default로 shall을 생성하지 않아 더 효율적이다.
         if(argument.substr(argument.length-3,3) == "exe"){
