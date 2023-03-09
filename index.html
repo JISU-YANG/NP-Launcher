@@ -293,7 +293,33 @@
                 transition: 0.2s all ease;
                 cursor: pointer;
             }
-
+            #path-editor{
+                display: none;
+                position: fixed;
+                width: 380px;
+                height: 280px;
+                left: 320px;
+                top: 30px;
+                padding: 20px;
+                background: #1c1c1c;
+                transition: 0.2s all ease;
+            }
+            #btn-preference-cancle, #btn-preference-save{
+                cursor: pointer;
+            }
+            .path-row, .btn-row{
+                display: inline-flex;
+                flex-direction: row;
+                justify-content:space-between;
+                width: 100%;
+                margin: 4px 0;
+                color: #868686;
+            }
+            .btn-row > div{
+                cursor: pointer;
+                text-decoration: underline;
+                color: #dcdcdc;
+            }
           </style>
     </head>
     <body>
@@ -310,7 +336,7 @@
                     </div>
                     <div>
                         <img src="src/game/game-cartrider.png" alt="카트라이더">
-                        <span><a href="">카트라이더</a></span>
+                        <span class="launcher">카트라이더</span>
                     </div>
                     <div>
                         <img src="src/game/game-mabinogi.png" alt="마비노기">
@@ -324,7 +350,7 @@
                 <div class="item-box" id="tool-area">
                     <div>
                         <img src="src/tool/tool-vscode.svg" alt="">
-                        <span><a href="">VS Code</a></span>
+                        <span><a href="" data-link="C:\Users\jisuyang\AppData\Local\Programs\Microsoft VS Code\Code.exe">VS Code</a></span>
                     </div>
                     <div>
                         <img src="src/tool/tool-photoshop.svg" alt="">
@@ -395,6 +421,7 @@
                     <div><a>밝기 설정</a></div>
                     <div><a>마우스 설정</a></div>
                     <div><a onclick="window.location.reload(true)">Reload</a></div>
+                    <div><a id="btn-preference">Path</a></div>
                 </div>
                 
                 <div id="footer-right">
@@ -404,7 +431,76 @@
                 </div>
                 
             </div>
-        <!-- <a href="run-lol:\\\">롤</a> -->
+        </div>
+        <div id="path-editor">
+            <div class="path-row">
+                <div class="path-title">
+                    리그오브레전드
+                </div>
+                <div>
+                    <input class="path-input" type="text">
+                </div>
+            </div>
+            <div class="path-row">
+                <div class="path-title">
+                    카트라이더
+                </div>
+                <div>
+                    <input class="path-input" type="text">
+                </div>
+            </div>
+            <div class="path-row">
+                <div class="path-title">
+                    명일방주
+                </div>
+                <div>
+                    <input class="path-input" type="text">
+                </div>
+            </div>
+            <div class="path-row">
+                <div class="path-title">
+                    VSCode
+                </div>
+                <div>
+                    <input class="path-input" type="text">
+                </div>
+            </div>
+            <div class="path-row">
+                <div class="path-title">
+                    Photoshop
+                </div>
+                <div>
+                    <input class="path-input" type="text">
+                </div>
+            </div>
+            <div class="path-row">
+                <div class="path-title">
+                    KakaoTalk
+                </div>
+                <div>
+                    <input class="path-input" type="text">
+                </div>
+            </div>
+            <div class="path-row">
+                <div class="path-title">
+                    Discord
+                </div>
+                <div>
+                    <input class="path-input" type="text">
+                </div>
+            </div>
+            <div class="path-row">
+                <div class="path-title">
+                    Blitz
+                </div>
+                <div>
+                    <input class="path-input" type="text">
+                </div>
+            </div>
+            <div class="btn-row">
+                <div id="btn-preference-cancle">취소</div>
+                <div id="btn-preference-save">저장</div>
+            </div>
         </div>
     </body>
     <script>
@@ -417,4 +513,5 @@
         }
     </script>
     <script type="module" src="./renderer.js"></script>
+    <script type="module" src="./preference.js"></script>
 </html>

@@ -2,6 +2,9 @@ const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const ipcMain = require('electron').ipcMain;
 const { contextIsolated } = require('process');
+const Store = require('electron-store');
+
+Store.initRenderer();
 
 const createWindow = () => {
     const displayWidth = require('electron').screen.getPrimaryDisplay().size.width;
@@ -49,7 +52,6 @@ const createWindow = () => {
  
 app.whenReady().then(() => {
     createWindow();
- 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow();
     });
