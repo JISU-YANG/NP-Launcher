@@ -11,6 +11,7 @@ const launchers = document.getElementsByClassName('launcher');
 const pathInputs = document.getElementsByClassName('path-input');
 
 let pathKey = 'path.launcher.';
+let pathCheck = 0;
 
 btnPreference.addEventListener('click',()=>{
     pathEditor.style.display = 'block';
@@ -24,10 +25,10 @@ btnPreferenceSave.addEventListener('click',()=>{
 
     for (let index = 0; index < pathInputs.length; index++) {
         const pathInput = pathInputs[index];
-
-        // console.log(pathKey.concat(index).concat(pathInput.value));
         store.set(pathKey.concat(index), pathInput.value);
     }
+    pathEditor.style.display = 'none';
+
 })
 
 for (let index = 0; index < launchers.length; index++) {
@@ -39,6 +40,10 @@ for (let index = 0; index < launchers.length; index++) {
         console.log(path);
         launcher.setAttribute('data-link', path);  
         pathInputs[index].value = path;
+        pathCheck++;
     }
+}
 
+if (pathCheck != pathInputs.length) {
+    alert(pathCheck+'/'+pathInputs.length+'실행파일의 경로를 설정해주세요.');
 }
