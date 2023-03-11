@@ -68,7 +68,7 @@
                 height: 158px;
             }
 
-            .game-img{
+            .gallery-img{
                 position: relative;
                 width: 100%;
                 height: 100%;
@@ -78,7 +78,7 @@
                 border-radius: 10px;
             }
 
-            #game-area > div{
+            #gallery-area > div{
                 position: relative;
                 width: 100px;
                 height: 120px;
@@ -88,7 +88,7 @@
             }
             
             
-            #game-area > div::before{
+            #gallery-area > div::before{
                 content: ' ';
                 display: block;
                 position: absolute;
@@ -101,7 +101,7 @@
                 background: #1c1c1c;
             }
 
-            .game-name{
+            .gallery-name{
                 position: absolute;
                 width:120px;
                 padding: 58px 0;
@@ -115,7 +115,7 @@
                 text-decoration: underline;
                 opacity: 0;
             } 
-            .game-name:hover{
+            .gallery-name:hover{
                 transition: 0.2s all ease;
                 background: rgba(38, 38, 38,0.9);
                 color:#dcdcdc;
@@ -246,20 +246,20 @@
                 border-right: 2px solid #333;
                 margin-top:15px;
             }
-            #tool-area{
+            #icon-area{
                 margin-top:40px;
                 margin-left:5%;
                 width:90%;
                 height: 80px;
             }
-            #tool-area > div{
+            #icon-area > div{
                 width: 80px;
                 height: 80px;
                 text-align: center;
                 border-radius: 10px;
                 background: #262626;
             }
-            .tool-img{
+            .icon-img{
                 display: block;
                 width: 40px;
                 height: 40px;
@@ -271,7 +271,7 @@
                 filter: grayscale(100%);
 
             }
-            .tool-img:hover{
+            .icon-img:hover{
                 display: block;
                 width: 50px;
                 height: 50px;
@@ -284,7 +284,7 @@
                 filter: grayscale(0%);
 
             }
-            .tool-name{
+            .icon-name{
                 font-size: 10px;
                 font-weight: 700;
                 color: #868686;
@@ -354,7 +354,7 @@
             .gallery-item, .icon-item{
                 display: inline-flex;
                 justify-content: space-between;
-                width: 280px;
+                width: 320px;
                 height: 20px;
                 color: #868686;
                 margin-bottom: 10px;
@@ -365,7 +365,7 @@
             .folder-item{
                 display: inline-flex;
                 justify-content: space-between;
-                width: 200px;
+                width: 180px;
                 height: 20px;
                 color: #868686;
                 margin-bottom: 10px;
@@ -378,7 +378,7 @@
             .folder-item > div > input{
                 background: none;
                 border: none;
-                width: 80px;
+                width: 60px;
                 border-bottom: 1px solid #868686;
                 font-size: 10px;
                 font-family: 'Noto Sans KR', sans-serif;
@@ -412,15 +412,6 @@
                 border: none;
                 border-bottom: 1px solid #868686;
             }
-            input[type="file"]{
-                display: none;
-            }
-            label{
-                font-size: 8pt;
-                border-bottom: 1px solid #868686;
-                padding: 1px;
-
-            }
             #btn-preference-cancle, #btn-preference-save{
                 cursor: pointer;
             }
@@ -442,75 +433,11 @@
     <body>
         <div id="container">
             <div id="left-box">
-                <div class="item-box" id="game-area">
-                    <div class="launcher">
-                        <img class="game-img" src="src/game/game-lol.png" alt="롤">
-                        <span class="game-name">리그 오브 레전드</span>
-                    </div>
-                    <div>
-                        <a href="https://maplestory.nexon.com/Home/Main">
-                            <img class="game-img" src="src/game/game-maple.png" alt="메이플">
-                            <span class="game-name">메이플 스토리</span>
-                        </a>
-                    </div>
-                    <div class="launcher">
-                        <img class="game-img" src="src/game/game-cartrider.png" alt="카트라이더">
-                        <span class="game-name">카트라이더</span>
-                    </div>
-                    <div>
-                        <a href="https://mabinogi.nexon.com/page/main/index.asp">
-                            <img class="game-img" src="src/game/game-mabinogi.png" alt="마비노기">
-                            <span class="game-name">마비노기</span>
-                        </a>
-                    </div>
-                    <div class="launcher">
-                        <img class="game-img" src="src/game/game-arknights.png" alt="명일방주">
-                        <span class="game-name">명일방주</span>
-                    </div>
-                    <div class="launcher">
-                        <img class="game-img" src="src/game/game-arknights.png" alt="명일방주">
-                        <span class="game-name">명일방주</span>
-                    </div>
+                <div class="item-box" id="gallery-area">
+                    
                 </div>
-                <div class="item-box" id="tool-area">
-                    <div class="launcher">
-                        <img class="tool-img" src="src/tool/tool-vscode.svg" alt="">
-                        <span class="tool-name">VS Code</span>
-                    </div>
-                    <div class="launcher">
-                        <img class="tool-img" src="src/tool/tool-photoshop.svg" alt="">
-                        <span class="tool-name">Photoshop</span>
-                    </div>
-                    <div>
-                        <a href="https://todoist.com/">
-                            <img class="tool-img" src="src/tool/tool-todoist.svg" alt="todoist">
-                            <span class="tool-name">Todoist</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://www.notion.so/">
-                            <img class="tool-img" src="src/tool/tool-notion.png" alt="">
-                            <span class="tool-name">Notion</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://calendar.google.com/">
-                            <img class="tool-img" src="src/tool/tool-calendar.svg" alt="">
-                            <span class="tool-name">Calendar</span>
-                         </a>
-                    </div>
-                    <div class="launcher">
-                        <img class="tool-img" src="src/tool/tool-kakaotalk.png" alt="">
-                        <span class="tool-name">Kakao Talk</span>
-                    </div>
-                    <div class="launcher">
-                        <img class="tool-img" src="src/tool/tool-discord.png" alt="">
-                        <span class="tool-name">Discord</span>
-                    </div>
-                    <div class="launcher">
-                        <img class="tool-img" src="src/tool/tool-blitz.png" alt="">
-                        <span class="tool-name">Blitz</span>
-                    </div>
+                <div class="item-box" id="icon-area">
+  
                 </div>
                 <div id="center-box">
                     <div id="link-area">
@@ -536,12 +463,7 @@
             </div>
             <div id="right-box">
                 <div class="item-box list-view">
-                    <div>
-                        <div class="launcher-basic list-item" data-link="C:\Users\jisuyang\Desktop">바탕화면</div>
-                        <div class="launcher-basic list-item" data-link="C:\Users\jisuyang\Downloads">다운로드</div>
-                        <div class="launcher-basic list-item" data-link="C:\Users\jisuyang\Documents\카카오톡 받은 파일">카카오톡 받은 파일</div>
-                        <div class="launcher-basic list-item" data-link="C:\Users\jisuyang\Pictures\wallpaper">배경화면 보관함</div>
-
+                    <div id="folder-area">
                     </div>
                     <div>
                         <div id="btn-preference" class="list-item">환경설정</div>
@@ -581,113 +503,6 @@
                     <input class="path-input" type="text">
                 </div> -->
             <div id="setting-row">
-<!--                 
-               <div class="setting-col">
-                     <div>갤러리</div>
-                     <div class="gallery-item">
-                        <div>1: </div>
-                        <div>
-                            <select name="gallery-type-item1" id="gallery-type-item1">
-                                <option value="none">none</option>
-                                <option value="url">url</option>
-                                <option value="exe">exe</option>
-                            </select>
-                        </div>
-                        <div>
-                            <input type="text" name="gallery-name-item1" placeholder="title">
-                        </div>
-                        <div>
-                            <input type="text" name="gallery-link-item1" placeholder="link">
-                        </div>
-                        <div>
-                            <input type="file" name="gallery-img-item1">
-                        </div>
-                     </div>
-                     <div class="gallery-item">
-                        <div>2: </div>
-                        <div>
-                            <select name="gallery-type-item1" id="gallery-type-item1">
-                                <option value="none">none</option>
-                                <option value="url">url</option>
-                                <option value="exe">exe</option>
-                            </select>
-                        </div>
-                        <div>
-                            <input type="text" name="gallery-name-item1">
-                        </div>
-                        <div>
-                            <input type="text" name="gallery-link-item1">
-                        </div>
-                        <div>
-                            <input type="file" name="gallery-img-item1">
-                        </div>
-                     </div>
-                    
-               </div>
-               <div class="setting-col">
-                <div>아이콘</div>
-                <div class="icon-item">
-                   <div>1: </div>
-                   <div>
-                       <select name="icon-type-item1" id="icon-type-item1">
-                           <option value="none">none</option>
-                           <option value="url">url</option>
-                           <option value="exe">exe</option>
-                       </select>
-                   </div>
-                   <div>
-                       <input type="text" name="icon-name-item1" placeholder="title">
-                   </div>
-                   <div>
-                       <input type="text" name="icon-link-item1" placeholder="link">
-                   </div>
-                   <div>
-                       <input type="file" name="icon-img-item1">
-                   </div>
-                </div>
-                <div class="icon-item">
-                   <div>2: </div>
-                   <div>
-                       <select name="icon-type-item1" id="icon-type-item1">
-                           <option value="none">none</option>
-                           <option value="url">url</option>
-                           <option value="exe">exe</option>
-                       </select>
-                   </div>
-                   <div>
-                       <input type="text" name="icon-name-item1">
-                   </div>
-                   <div>
-                       <input type="text" name="icon-link-item1">
-                   </div>
-                   <div>
-                       <input type="file" name="icon-img-item1">
-                   </div>
-                </div>
-               </div>
-               <div class="setting-col">
-                <div class="setting-col">
-                    <div>폴더</div>
-                    <div class="folder-item">
-                       <div>1: </div>
-                       <div>
-                           <input type="text" name="folder-name-item1" placeholder="folder name">
-                       </div>
-                       <div>
-                           <input type="text" name="folder-link-item1" placeholder="folder link">
-                       </div>
-                    </div>
-                    <div class="folder-item">
-                       <div>2: </div>
-                       <div>
-                           <input type="text" name="folder-name-item1">
-                       </div>
-                       <div>
-                           <input type="text" name="folder-link-item1">
-                       </div>
-                    </div> -->
-               <!-- </div> -->
-            <!-- </div> -->
             </div>
             <div class="btn-row">
                 <div id="btn-preference-cancle">취소</div>
@@ -704,54 +519,10 @@
             }
         }
     </script>
-    <script>
-        let settingTitle = ['갤러리', '아이콘', '폴더'];
-        let settingType = ['gallery', 'icon', 'folder'];
-        let settingMax = [6,8,5];
-        function drawSetting(){
-            let htmlSetting = '';
 
-            for (let i = 0; i < settingTitle.length; i++) {
-                htmlSetting += 
-                    '<div class="setting-col">' +
-                        '<div>' + settingTitle[i] + '</div>';
-                for (let j = 0; j < settingMax[i]; j++) {
-                    htmlSetting += 
-                    '<div class="' + settingType[i] + '-item">'+
-                        '<div>'+(j+1)+': </div>';
-                        if(i!=settingTitle.length-1){
-                            htmlSetting += 
-                                '<div>'+
-                                    '<select name="' + settingType[i] + '-type-item-'+j+'" id="' + settingType[i] + '-type-item-'+j+'">'+
-                                        '<option value="type" selected="selected">종류</option>'+
-                                        '<option value="url">url</option>'+
-                                        '<option value="exe">exe</option>'+
-                                    '</select>'+
-                                '</div>';
-                        }
-                    htmlSetting += 
-                        '<div>'+
-                            '<input type="text" name="' + settingType[i] + '-name-item-'+j+'" placeholder="이름">'+
-                        '</div>'+
-                        '<div>'+
-                            '<input type="text" name="' + settingType[i] + '-link-item-'+j+'" placeholder="경로">'+
-                        '</div>';
-                        if(i!=settingTitle.length-1){
-                            htmlSetting += 
-                                '<div>'+
-                                    '<label for="'+ settingType[i] +'-img-item-'+j+'">이미지</label>' +
-                                    '<input type="file" id="' + settingType[i] + '-img-item-'+j+'" name="' + settingType[i] + '-img-item-'+j+'">'+
-                                '</div>';
-                        }
-                        htmlSetting += '</div>';
-                }
-                htmlSetting += '</div>';
-            }
-            
-            document.getElementById('setting-row').innerHTML = htmlSetting;
-        }
-        drawSetting();
-    </script>
-    <script type="module" src="./renderer.js"></script>
     <script type="module" src="./preference.js"></script>
+    <script type="module" src="./renderer.js"></script>
+    <script defer="defer">
+    
+    </script>
 </html>
