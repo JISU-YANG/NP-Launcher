@@ -20,6 +20,7 @@
     }
   },
   "dependencies": {
+    "electron-builder": "^23.6.0",
     "electron-shutdown-command": "^2.0.1",
     "electron-store": "^8.1.0"
   }
