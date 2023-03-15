@@ -27,7 +27,7 @@ const createWindow = () => {
     });
 
     // 개발자도구
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
 
     // 외부 브라우저로 연결 1
     // const shell = require('electron').shell;

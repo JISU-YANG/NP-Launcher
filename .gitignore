@@ -16,7 +16,10 @@
 *.vcxproj.user
 *.xcodeproj
 /.idea/
-/dist/
+/dist/.icon-ico/
+/dist/win-unpacked/
+/dist/builder-debug.yml
+/dist/builder-effective-config.yaml
 node_modules/
 SHASUMS256.txt
 **/package-lock.json
