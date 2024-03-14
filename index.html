@@ -56,6 +56,7 @@
                 border-radius: 10px;
                 box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);            
                 background: #1c1c1c;
+                opacity: 0.96;
             }
             #center-box > div:last-child{
                 width: 68%;
@@ -67,24 +68,27 @@
                 height: 158px;
             }
 
-            .game-img{
+            .gallery-img{
                 position: relative;
-                width: 160px;
-                height: 140px;
+                width: 100%;
+                height: 100%;
                 /* filter: grayscale(100%); */
                 transition: 0.2s all ease;
                 object-fit:cover;
                 border-radius: 10px;
             }
 
-            #game-area > div{
+            #gallery-area > div{
                 position: relative;
-                width: 160px;
-                height: 140px;
+                width: 100px;
+                height: 120px;
+                padding: 10px;
+                background: #333;
+                border-radius: 10px;
             }
             
             
-            #game-area > div::before{
+            #gallery-area > div::before{
                 content: ' ';
                 display: block;
                 position: absolute;
@@ -97,24 +101,24 @@
                 background: #1c1c1c;
             }
 
-            .game-name{
+            .gallery-name{
                 position: absolute;
-                width:160px;
-                padding: 56px 0;
+                width:120px;
+                padding: 58px 0;
                 text-align: center;
                 bottom: 0px;
                 left:0;
-                font-size: 20px;
+                font-size: 16px;
                 font-weight: 700;
-                background: rgba(38, 38, 38,0.9);
                 z-index: 2;
-                opacity: 0;
                 border-radius: 10px;
                 text-decoration: underline;
-                color:#dcdcdc
+                opacity: 0;
             } 
-            .game-name:hover{
+            .gallery-name:hover{
                 transition: 0.2s all ease;
+                background: rgba(38, 38, 38,0.9);
+                color:#dcdcdc;
                 opacity: 1;
                 cursor: pointer;
             }
@@ -133,21 +137,40 @@
             }
             #footer > div {
                 display: inline-flex;
+                justify-content: space-between;
+            }
+            #footer-left{
+                width: 900px;
+                display: inline-flex;
+
+            }
+            #footer-left > div{
+                display: inline-flex;
+                justify-content: space-evenly;
             }
             #footer-right{
-                justify-content: flex-end;
-                padding-right: 20px;
+                width: 200px;
+                padding-right: 16px;
             }
-            #footer > div > div > a{
+            #footer-right > div{
+                font-weight: 700;
+                color:#262626;
+            }
+            #footer-right > div:last-child{
+                font-weight: 900;
+                color:#333;
+            }
+            .footer-btn{
                 padding: 4px 10px 6px 10px;
                 font-size: 10px;
                 color: #868686;
                 background: #262626;
-                margin-left:  20px;
-                border-radius: 10px;
+                margin-left:  10px;
+                margin-top:0px;
                 text-decoration: underline;
                 cursor: pointer;
             }
+
             #search-area{
                 display: inline-flex;
                 justify-content: space-around;
@@ -182,10 +205,7 @@
                 font-size: 12px;
 
             }
-            .bg-pattern{
-                background: linear-gradient(45deg, #262626 25%, #333 0, #333 50%, #262626 0, #262626 75%, #333 0 );
-                background-size:5px 5px
-            }
+
             #input-search{
                 border: none;
                 background: none;
@@ -226,20 +246,20 @@
                 border-right: 2px solid #333;
                 margin-top:15px;
             }
-            #tool-area{
+            #icon-area{
                 margin-top:40px;
                 margin-left:5%;
                 width:90%;
                 height: 80px;
             }
-            #tool-area > div{
+            #icon-area > div{
                 width: 80px;
                 height: 80px;
                 text-align: center;
                 border-radius: 10px;
                 background: #262626;
             }
-            .tool-img{
+            .icon-img{
                 display: block;
                 width: 40px;
                 height: 40px;
@@ -251,7 +271,7 @@
                 filter: grayscale(100%);
 
             }
-            .tool-img:hover{
+            .icon-img:hover{
                 display: block;
                 width: 50px;
                 height: 50px;
@@ -264,7 +284,7 @@
                 filter: grayscale(0%);
 
             }
-            .tool-name{
+            .icon-name{
                 font-size: 10px;
                 font-weight: 700;
                 color: #868686;
@@ -272,42 +292,125 @@
                 text-decoration: none;
             }
             .list-view{
-                height: 360px;
-                padding: 20px;
+                display: inline-flex;
+                height: 290px;
+                padding: 40px;
                 flex-direction: column;
-                justify-content: flex-start;
+                justify-content: space-between;
                 background: #262626;
             }
-            .list-view > div{
-                margin-bottom: 20px;
-            }
-            .list-view > div > a{
-                font-size: 20px;
-                font-weight: 900;
+            .list-item{
+                width: 130px;
+                padding: 8px 10px 10px 10px;
+                margin-bottom: 12px;
+                font-size: 12px;
+                font-weight: 700;
                 color:#868686;
+                border-radius: 10px;
                 /* text-decoration: underline; */
-                padding-left: 5px;
                 transition: 0.2s all ease;
-
+                background: linear-gradient(45deg, #262626 25%, #333 0, #333 50%, #262626 0, #262626 75%, #333 0 );
+                background-size:5px 5px
             }
-            .list-view > div > a:hover{
-                font-size: 20px;
-                font-weight: 900;
+            .list-item:hover{
                 color: #dcdcdc;
                 text-decoration: underline;
                 transition: 0.2s all ease;
                 cursor: pointer;
+                background: linear-gradient(45deg, #262626 25%, #1c1c1c 0, #1c1c1c 50%, #262626 0, #262626 75%, #1c1c1c 0 );
+                background-size:5px 5px
+
             }
-            #path-editor{
+            .list-view > div{
+                justify-content: flex-start;
+            }
+            #editor{
                 display: none;
                 position: fixed;
-                width: 380px;
-                height: 280px;
-                left: 320px;
-                top: 30px;
+                justify-content: space-between;
+                flex-direction: column;
+                width: 1100px;
+                height: 360px;
+                left: 8px;
+                top: 0;
                 padding: 20px;
                 background: #1c1c1c;
                 transition: 0.2s all ease;
+                opacity: 0.96;
+            }
+            #setting-row{
+                display: inline-flex;
+                justify-content: space-between;
+            }
+            .setting-col{
+                display: inline-flex;
+                flex-direction: column;
+            }
+            .setting-col > div:first-child{
+                font-size: 20px;
+                color:#dcdcdc;
+                margin-bottom: 20px;
+            }
+            .gallery-item, .icon-item{
+                display: inline-flex;
+                justify-content: space-between;
+                width: 320px;
+                height: 20px;
+                color: #868686;
+                margin-bottom: 10px;
+                font-size: 10px;
+                padding: 6px 0px 0 10px;
+                border-left: 2px solid #dcdcdc;
+            }
+            .folder-item{
+                display: inline-flex;
+                justify-content: space-between;
+                width: 180px;
+                height: 20px;
+                color: #868686;
+                margin-bottom: 10px;
+                font-size: 10px;
+                padding: 6px 0px 0 10px;
+                border-left: 2px solid #dcdcdc;
+            }
+            .gallery-item > div > input,
+            .icon-item > div > input,
+            .folder-item > div > input{
+                background: none;
+                border: none;
+                width: 60px;
+                border-bottom: 1px solid #868686;
+                font-size: 10px;
+                font-family: 'Noto Sans KR', sans-serif;
+                font-weight: 700;
+                color: #dcdcdc;
+            }
+            .gallery-item > div > input::placeholder,
+            .icon-item > div > input::placeholder,
+            .folder-item > div > input::placeholder{
+                font-family: 'Noto Sans KR', sans-serif;
+                font-size: 8pt;
+                font-weight: 700;
+                color: #868686;
+            }
+            select{
+                font-family: 'Noto Sans KR', sans-serif;
+                font-size: 8pt;
+                font-weight: 700;
+                -moz-appearance: none;
+                -webkit-appearance: none;
+                appearance: none;
+                background: #1c1c1c;
+                border: none;
+                border-bottom: 1px solid #868686;
+                color:#868686;
+                padding-bottom: 1px;
+            }
+            select:focus {
+                background: #1c1c1c;
+                outline: none;
+                border: none;
+                border-bottom: 1px solid #868686;
             }
             #btn-preference-cancle, #btn-preference-save{
                 cursor: pointer;
@@ -330,71 +433,11 @@
     <body>
         <div id="container">
             <div id="left-box">
-                <div class="item-box" id="game-area">
-                    <div class="launcher">
-                        <img class="game-img" src="src/game/game-lol.png" alt="롤">
-                        <span class="game-name">리그 오브 레전드</span>
-                    </div>
-                    <div>
-                        <a href="https://maplestory.nexon.com/Home/Main">
-                            <img class="game-img" src="src/game/game-maple.png" alt="메이플">
-                            <span class="game-name">메이플 스토리</span>
-                        </a>
-                    </div>
-                    <div class="launcher">
-                        <img class="game-img" src="src/game/game-cartrider.png" alt="카트라이더">
-                        <span class="game-name">카트라이더</span>
-                    </div>
-                    <div>
-                        <a href="https://mabinogi.nexon.com/page/main/index.asp">
-                            <img class="game-img" src="src/game/game-mabinogi.png" alt="마비노기">
-                            <span class="game-name">마비노기</span>
-                        </a>
-                    </div>
-                    <div class="launcher">
-                        <img class="game-img" src="src/game/game-arknights.png" alt="명일방주">
-                        <span class="game-name">명일방주</span>
-                    </div>
+                <div class="item-box" id="gallery-area">
+                    
                 </div>
-                <div class="item-box" id="tool-area">
-                    <div class="launcher">
-                        <img class="tool-img" src="src/tool/tool-vscode.svg" alt="">
-                        <span class="tool-name">VS Code</span>
-                    </div>
-                    <div class="launcher">
-                        <img class="tool-img" src="src/tool/tool-photoshop.svg" alt="">
-                        <span class="tool-name">Photoshop</span>
-                    </div>
-                    <div>
-                        <a href="https://todoist.com/">
-                            <img class="tool-img" src="src/tool/tool-todoist.svg" alt="todoist">
-                            <span class="tool-name">Todoist</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://www.notion.so/">
-                            <img class="tool-img" src="src/tool/tool-notion.png" alt="">
-                            <span class="tool-name">Notion</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://calendar.google.com/">
-                            <img class="tool-img" src="src/tool/tool-calendar.svg" alt="">
-                            <span class="tool-name">Calendar</span>
-                         </a>
-                    </div>
-                    <div class="launcher">
-                        <img class="tool-img" src="src/tool/tool-kakaotalk.png" alt="">
-                        <span class="tool-name">Kakao Talk</span>
-                    </div>
-                    <div class="launcher">
-                        <img class="tool-img" src="src/tool/tool-discord.png" alt="">
-                        <span class="tool-name">Discord</span>
-                    </div>
-                    <div class="launcher">
-                        <img class="tool-img" src="src/tool/tool-blitz.png" alt="">
-                        <span class="tool-name">Blitz</span>
-                    </div>
+                <div class="item-box" id="icon-area">
+  
                 </div>
                 <div id="center-box">
                     <div id="link-area">
@@ -420,96 +463,46 @@
             </div>
             <div id="right-box">
                 <div class="item-box list-view">
-                    <div class="bg-pattern"><a class="launcher-basic" data-link="C:\Users\jisuyang\Desktop">바탕화면</a></div>
-                    <div class="bg-pattern"><a class="launcher-basic" data-link="C:\Users\jisuyang\Downloads">다운로드</a></div>
-                    <div class="bg-pattern"><a class="launcher-basic" data-link="C:\Users\jisuyang\Documents\카카오톡 받은 파일">카카오톡 받은 파일</a></div>
-                    <div class="bg-pattern"><a class="launcher-basic" data-link="C:\Users\jisuyang\Pictures\wallpaper">배경화면 보관함</a></div>
+                    <div id="folder-area">
+                    </div>
+                    <div>
+                        <div id="btn-preference" class="list-item">환경설정</div>
+                    </div>
+                    
                 </div>
             </div>
             <div id="footer">
                 <div id="footer-left">
-                    <div><a class="launcher-basic" data-link="shutdown">시스템 종료</a></div>
-                    <div><a class="launcher-basic" data-link="reboot">시스템 재부팅</a></div>
+                    <div>
+                        <div><a class="launcher-basic footer-btn" data-link="shutdown">시스템 종료</a></div>
+                        <div><a class="launcher-basic footer-btn" data-link="reboot">시스템 재부팅</a></div>
+                    </div>
+
                     <!--https://learn.microsoft.com/en-us/windows/uwp/launch-resume/launch-settings-app-->
-                    <div><a href="ms-settings:easeofaccess-colorfilter-bluelightlink">밝기</a></div>
-                    <div><a href="ms-settings:sound">소리</a></div>
-                    <div><a href="ms-settings:mousetouchpad">마우스</a></div>
-                    <div><a onclick="window.location.reload(true)">Reload</a></div>
-                    <div><a id="btn-preference">Path</a></div>
+                    <div>
+                        <div><a class="footer-btn" href="ms-settings:easeofaccess-colorfilter-bluelightlink">밝기</a></div>
+                        <div><a class="footer-btn" href="ms-settings:sound">소리</a></div>
+                        <div><a class="footer-btn" href="ms-settings:mousetouchpad">마우스</a></div>
+                    </div>
+
                 </div>
                 
                 <div id="footer-right">
-                    <div><a class="launcher-basic" data-link="C:\Windows\System32\calc.exe">계산기</a></div>
-                    <div><a class="launcher-basic" data-link="C:\Windows\System32\notepad.exe">메모장</a></div>
-                    <div><a class="launcher-basic" data-link="C:\Windows\System32\SnippingTool.exe">캡처도구</a></div>
+                    <div>Noly-Poly</div>
+                    <div>|</div>
+                    <div>NP Launcher</div>
                 </div>
                 
             </div>
         </div>
-        <div id="path-editor">
-            <div class="path-row">
-                <div class="path-title">
+        <div id="editor">
+             <!-- <div class="path-title">
                     리그오브레전드
                 </div>
                 <div>
                     <input class="path-input" type="text">
-                </div>
-            </div>
-            <div class="path-row">
-                <div class="path-title">
-                    카트라이더
-                </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div>
-            </div>
-            <div class="path-row">
-                <div class="path-title">
-                    명일방주
-                </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div>
-            </div>
-            <div class="path-row">
-                <div class="path-title">
-                    VSCode
-                </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div>
-            </div>
-            <div class="path-row">
-                <div class="path-title">
-                    Photoshop
-                </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div>
-            </div>
-            <div class="path-row">
-                <div class="path-title">
-                    KakaoTalk
-                </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div>
-            </div>
-            <div class="path-row">
-                <div class="path-title">
-                    Discord
-                </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div>
-            </div>
-            <div class="path-row">
-                <div class="path-title">
-                    Blitz
-                </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div>
+                </div> -->
+            <div id="setting-row">
             </div>
             <div class="btn-row">
                 <div id="btn-preference-cancle">취소</div>
@@ -526,6 +519,8 @@
             }
         }
     </script>
-    <script type="module" src="./renderer.js"></script>
+
     <script type="module" src="./preference.js"></script>
+    <script type="module" src="./renderer.js"></script>
+
 </html>

@@ -17,7 +17,7 @@ const createWindow = () => {
         transparent: true,
         resizable: false,
         x: (displayWidth - 1150) / 2,
-        y: 620,
+        y: 600,
         webPreferences: { 
             preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true,
@@ -26,6 +26,7 @@ const createWindow = () => {
         }
     });
 
+    // 개발자도구
     // win.webContents.openDevTools();
 
     // 외부 브라우저로 연결 1
