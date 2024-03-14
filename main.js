@@ -9,6 +9,7 @@ Store.initRenderer();
 
 const createWindow = () => {
     const displayWidth = require('electron').screen.getPrimaryDisplay().size.width;
+    const displayHeight = require('electron').screen.getPrimaryDisplay().size.height;
 
     const win = new BrowserWindow({
         width: 1150,
@@ -17,7 +18,7 @@ const createWindow = () => {
         transparent: true,
         resizable: false,
         x: (displayWidth - 1150) / 2,
-        y: 600,
+        y: (displayHeight - 420) * 0.8,
         webPreferences: { 
             preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true,
