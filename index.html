@@ -1,524 +1,624 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>NP Launcher</title>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
 
-            html,
-            body {
-                font-family: 'Noto Sans KR', sans-serif;
-                font-size: 14px;
-                font-weight: 700;
-            }
-            a{
-                text-decoration: none;
-            }
-            #container{
-                position: fixed;
-                display: inline-flex;
-                justify-content: space-between;
-                align-items: stretch;
-                bottom: 20px;
-                width: 100%;
-                height: 400px;
-                background: linear-gradient(45deg, #262626 25%, #1c1c1c 0, #1c1c1c 50%, #262626 0, #262626 75%, #1c1c1c 0 );
-                background-size:5px 5px;
-            }
+<head>
+    <title>NP Launcher</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
 
-            #left-box{
-                position: relative;
-                width: 820px;
-                height: 320px;;
-                padding: 40px;
-
-            }
-            #right-box{
-                position: relative;
-                width: 240px;
-                height: 390px;
-            }
-            #center-box{
-                display: inline-flex;
-                position: absolute;
-                justify-content: space-between;
-                top: 155px;
-                left: 0px;
-                width: 74%;
-                margin: 0 13%;
-                height: 50px;
-                z-index: 10;
-
-            }
-            #center-box > div{
-                width: 30%;
-                height: 100%;
-                border-radius: 10px;
-                box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);            
-                background: #1c1c1c;
-                opacity: 0.96;
-            }
-            #center-box > div:last-child{
-                width: 68%;
-            }
-            .item-box{
-                display: inline-flex;
-                justify-content: space-between;
-                width: 100%;
-                height: 158px;
-            }
-
-            .gallery-img{
-                position: relative;
-                width: 100%;
-                height: 100%;
-                /* filter: grayscale(100%); */
-                transition: 0.2s all ease;
-                object-fit:cover;
-                border-radius: 10px;
-            }
-
-            #gallery-area > div{
-                position: relative;
-                width: 100px;
-                height: 120px;
-                padding: 10px;
-                background: #333;
-                border-radius: 10px;
-            }
-            
-            
-            #gallery-area > div::before{
-                content: ' ';
-                display: block;
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 1;
-                opacity: 0.2;
-                background: #1c1c1c;
-            }
-
-            .gallery-name{
-                position: absolute;
-                width:120px;
-                padding: 58px 0;
-                text-align: center;
-                bottom: 0px;
-                left:0;
-                font-size: 16px;
-                font-weight: 700;
-                z-index: 2;
-                border-radius: 10px;
-                text-decoration: underline;
-                opacity: 0;
-            } 
-            .gallery-name:hover{
-                transition: 0.2s all ease;
-                background: rgba(38, 38, 38,0.9);
-                color:#dcdcdc;
-                opacity: 1;
-                cursor: pointer;
-            }
-
-            #footer{
-                position: fixed;
-                display: inline-flex;
-                justify-items: flex-start;
-                justify-content: space-between;
-                width: 1142px;
-                height: 32px;
-                left: 8px;
-                bottom: 20px;
-                background: #1c1c1c;
-                padding-top:8px;
-            }
-            #footer > div {
-                display: inline-flex;
-                justify-content: space-between;
-            }
-            #footer-left{
-                width: 900px;
-                display: inline-flex;
-
-            }
-            #footer-left > div{
-                display: inline-flex;
-                justify-content: space-evenly;
-            }
-            #footer-right{
-                width: 200px;
-                padding-right: 16px;
-            }
-            #footer-right > div{
-                font-weight: 700;
-                color:#262626;
-            }
-            #footer-right > div:last-child{
-                font-weight: 900;
-                color:#333;
-            }
-            .footer-btn{
-                padding: 4px 10px 6px 10px;
-                font-size: 10px;
-                color: #868686;
-                background: #262626;
-                margin-left:  10px;
-                margin-top:0px;
-                text-decoration: underline;
-                cursor: pointer;
-            }
-
-            #search-area{
-                display: inline-flex;
-                justify-content: space-around;
-                vertical-align: middle;
-                line-height: 50px;
-            }
-
-            #search-area > div:first-child{
-                width: 80px;
-                height: 30px;
-                border-radius: 10px;
-                margin-top:10px;
-                vertical-align: middle;
-                line-height: 30px;
-                text-align: center;
-            }
-            #search-area > div:first-child > a{
-                color:#868686;
-                font-weight: 900;
-                font-size: 12px;
-            }
-            #search-area > div:last-child{
-                width: 350px;
-                height: 30px;
-                border-radius: 10px;
-                margin-top:10px;
-                vertical-align: middle;
-                line-height: 30px;
-                color:#868686;
-                text-align: center;
-                font-weight: 900;
-                font-size: 12px;
-
-            }
-
-            #input-search{
-                border: none;
-                background: none;
-                color: #868686;
-                width: 300px;
-                outline: none;
-            }
-            #input-search::placeholder{
-                font-family: 'Noto Sans KR', sans-serif;
-                font-size: 12px;
-                font-weight: 400;     
-            }
-            #icon-search{
-                width: 30px;
-                height: 30px;
-                margin-top: 10px;
-            }
-            #link-area{
-                display: inline-flex;
-                justify-content: space-evenly;
-            }
-            #link-area > div img{
-                width: 20px;
-                height: 20px;
-                padding:5px;
-                margin: 10px 0px;
-            }
-            #link-area > div img:hover{
-                width: 20px;
-                height: 20px;
-                background:#dcdcdc;
-                border-radius: 30px;
-                cursor: pointer;
-            }
-            .vertical-divider{
-                width: 0px;
-                height: 20px;
-                border-right: 2px solid #333;
-                margin-top:15px;
-            }
-            #icon-area{
-                margin-top:40px;
-                margin-left:5%;
-                width:90%;
-                height: 80px;
-            }
-            #icon-area > div{
-                width: 80px;
-                height: 80px;
-                text-align: center;
-                border-radius: 10px;
-                background: #262626;
-            }
-            .icon-img{
-                display: block;
-                width: 40px;
-                height: 40px;
-                padding: 5px;
-                margin-top: 5px;
-                margin-left: 15px;
-                border-radius: 10px;
-                transition: 0.2s all ease;
-                filter: grayscale(100%);
-
-            }
-            .icon-img:hover{
-                display: block;
-                width: 50px;
-                height: 50px;
-                padding: 0px;
-                margin-top: 5px;
-                margin-left: 15px;
-                border-radius: 10px;
-                transition: 0.2s all ease;
-                cursor: pointer;
-                filter: grayscale(0%);
-
-            }
-            .icon-name{
-                font-size: 10px;
-                font-weight: 700;
-                color: #868686;
-                margin-top:5px;
-                text-decoration: none;
-            }
-            .list-view{
-                display: inline-flex;
-                height: 290px;
-                padding: 40px;
-                flex-direction: column;
-                justify-content: space-between;
-                background: #262626;
-            }
-            .list-item{
-                width: 130px;
-                padding: 8px 10px 10px 10px;
-                margin-bottom: 12px;
-                font-size: 12px;
-                font-weight: 700;
-                color:#868686;
-                border-radius: 10px;
-                /* text-decoration: underline; */
-                transition: 0.2s all ease;
-                background: linear-gradient(45deg, #262626 25%, #333 0, #333 50%, #262626 0, #262626 75%, #333 0 );
-                background-size:5px 5px
-            }
-            .list-item:hover{
-                color: #dcdcdc;
-                text-decoration: underline;
-                transition: 0.2s all ease;
-                cursor: pointer;
-                background: linear-gradient(45deg, #262626 25%, #1c1c1c 0, #1c1c1c 50%, #262626 0, #262626 75%, #1c1c1c 0 );
-                background-size:5px 5px
-
-            }
-            .list-view > div{
-                justify-content: flex-start;
-            }
-            #editor{
-                display: none;
-                position: fixed;
-                justify-content: space-between;
-                flex-direction: column;
-                width: 1100px;
-                height: 360px;
-                left: 8px;
-                top: 0;
-                padding: 20px;
-                background: #1c1c1c;
-                transition: 0.2s all ease;
-                opacity: 0.96;
-            }
-            #setting-row{
-                display: inline-flex;
-                justify-content: space-between;
-            }
-            .setting-col{
-                display: inline-flex;
-                flex-direction: column;
-            }
-            .setting-col > div:first-child{
-                font-size: 20px;
-                color:#dcdcdc;
-                margin-bottom: 20px;
-            }
-            .gallery-item, .icon-item{
-                display: inline-flex;
-                justify-content: space-between;
-                width: 320px;
-                height: 20px;
-                color: #868686;
-                margin-bottom: 10px;
-                font-size: 10px;
-                padding: 6px 0px 0 10px;
-                border-left: 2px solid #dcdcdc;
-            }
-            .folder-item{
-                display: inline-flex;
-                justify-content: space-between;
-                width: 180px;
-                height: 20px;
-                color: #868686;
-                margin-bottom: 10px;
-                font-size: 10px;
-                padding: 6px 0px 0 10px;
-                border-left: 2px solid #dcdcdc;
-            }
-            .gallery-item > div > input,
-            .icon-item > div > input,
-            .folder-item > div > input{
-                background: none;
-                border: none;
-                width: 60px;
-                border-bottom: 1px solid #868686;
-                font-size: 10px;
-                font-family: 'Noto Sans KR', sans-serif;
-                font-weight: 700;
-                color: #dcdcdc;
-            }
-            .gallery-item > div > input::placeholder,
-            .icon-item > div > input::placeholder,
-            .folder-item > div > input::placeholder{
-                font-family: 'Noto Sans KR', sans-serif;
-                font-size: 8pt;
-                font-weight: 700;
-                color: #868686;
-            }
-            select{
-                font-family: 'Noto Sans KR', sans-serif;
-                font-size: 8pt;
-                font-weight: 700;
-                -moz-appearance: none;
-                -webkit-appearance: none;
-                appearance: none;
-                background: #1c1c1c;
-                border: none;
-                border-bottom: 1px solid #868686;
-                color:#868686;
-                padding-bottom: 1px;
-            }
-            select:focus {
-                background: #1c1c1c;
-                outline: none;
-                border: none;
-                border-bottom: 1px solid #868686;
-            }
-            #btn-preference-cancle, #btn-preference-save{
-                cursor: pointer;
-            }
-            .path-row, .btn-row{
-                display: inline-flex;
-                flex-direction: row;
-                justify-content:space-between;
-                width: 100%;
-                margin: 4px 0;
-                color: #868686;
-            }
-            .btn-row > div{
-                cursor: pointer;
-                text-decoration: underline;
-                color: #dcdcdc;
-            }
-          </style>
-    </head>
-    <body>
-        <div id="container">
-            <div id="left-box">
-                <div class="item-box" id="gallery-area">
-                    
-                </div>
-                <div class="item-box" id="icon-area">
-  
-                </div>
-                <div id="center-box">
-                    <div id="link-area">
-                        <div>
-                            <a href="https://news.naver.com/"><img src="src/icon/icon-news.svg" alt="뉴스"></a>
-                        </div>
-                        <div class="vertical-divider"></div>
-                        <div>
-                            <a href="https://papago.naver.com/"><img src="src/icon/icon-dictionary.svg" alt="사전"></a>
-                        </div>
-                        <div class="vertical-divider"></div>
-                        <div>
-                            <a href="https://map.kakao.com/"><img src="src/icon/icon-map.svg" alt="지도"></a>
-                        </div>
-                    </div>
-                    <div id="search-area">
-                        <div><a href="http://google.com">Google</a></div>
-                        <div class="vertical-divider"></div>
-                        <div><input type="text" id="input-search" onkeyup="enterkey()" placeholder="Type to search"></div>
-                    </div>
-                </div>
-
-            </div>
-            <div id="right-box">
-                <div class="item-box list-view">
-                    <div id="folder-area">
-                    </div>
-                </div>
-            </div>
-            <div id="footer">
-                <div id="footer-left">
-                    <div>
-                        <div><a class="launcher-basic footer-btn" data-link="shutdown">시스템 종료</a></div>
-                        <div><a class="launcher-basic footer-btn" data-link="reboot">시스템 재부팅</a></div>
-                        <div><a class="footer-btn" id="btn-preference">런처 설정</a></div>
-
-                    </div>
-
-                    <!--https://learn.microsoft.com/en-us/windows/uwp/launch-resume/launch-settings-app-->
-                    <div>
-                        <div><a class="footer-btn" href="ms-settings:easeofaccess-colorfilter-bluelightlink">밝기</a></div>
-                        <div><a class="footer-btn" href="ms-settings:sound">소리</a></div>
-                        <div><a class="footer-btn" href="ms-settings:mousetouchpad">마우스</a></div>
-                    </div>
-
-                </div>
-                
-                <div id="footer-right">
-                    <div>Noly-Poly</div>
-                    <div>|</div>
-                    <div>NP Launcher</div>
-                </div>
-                
-            </div>
-        </div>
-        <div id="editor">
-             <!-- <div class="path-title">
-                    리그오브레전드
-                </div>
-                <div>
-                    <input class="path-input" type="text">
-                </div> -->
-            <div id="setting-row">
-            </div>
-            <div class="btn-row">
-                <div id="btn-preference-cancle">취소</div>
-                <div id="btn-preference-save">저장</div>
-            </div>
-        </div>
-    </body>
-    <script>
-        function enterkey() {
-            if (window.event.keyCode == 13) {
-                let keyword = document.getElementById('input-search').value;
-                let url = 'https://www.google.com/search?q=' + keyword;
-                location.href = url;
-            }
+        html,
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
         }
-    </script>
 
-    <script type="module" src="./preference.js"></script>
-    <script type="module" src="./renderer.js"></script>
+        a {
+            text-decoration: none;
+        }
+
+        #container {
+            position: fixed;
+            display: inline-flex;
+            justify-content: space-between;
+            align-items: stretch;
+            bottom: 20px;
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(45deg, #262626 25%, #1c1c1c 0, #1c1c1c 50%, #262626 0, #262626 75%, #1c1c1c 0);
+            background-size: 5px 5px;
+        }
+
+        #left-box {
+            position: relative;
+            width: 820px;
+            height: 320px;
+            ;
+            padding: 40px;
+
+        }
+
+        #right-box {
+            position: relative;
+            width: 240px;
+            height: 390px;
+        }
+
+        #center-box {
+            display: inline-flex;
+            position: absolute;
+            justify-content: space-between;
+            top: 155px;
+            left: 0px;
+            width: 74%;
+            margin: 0 13%;
+            height: 50px;
+            z-index: 10;
+
+        }
+
+        #center-box>div {
+            width: 30%;
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+            background: #1c1c1c;
+            opacity: 0.96;
+        }
+
+        #center-box>div:last-child {
+            width: 68%;
+        }
+
+        .item-box {
+            display: inline-flex;
+            justify-content: space-around;
+            width: 100%;
+            height: 158px;
+        }
+
+        .gallery-img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            /* filter: grayscale(100%); */
+            transition: 0.2s all ease;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        #gallery-area>div {
+            position: relative;
+            width: 100px;
+            height: 120px;
+            padding: 10px;
+            background: #333;
+            border-radius: 10px;
+        }
+
+
+        #gallery-area>div::before {
+            content: ' ';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.2;
+            background: #1c1c1c;
+        }
+
+        .gallery-name {
+            position: absolute;
+            width: 120px;
+            padding: 58px 0;
+            text-align: center;
+            bottom: 0px;
+            left: 0;
+            font-size: 16px;
+            font-weight: 700;
+            z-index: 2;
+            border-radius: 10px;
+            text-decoration: underline;
+            opacity: 0;
+        }
+
+        .gallery-name:hover {
+            transition: 0.2s all ease;
+            background: rgba(38, 38, 38, 0.9);
+            color: #dcdcdc;
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        #footer {
+            position: fixed;
+            display: inline-flex;
+            justify-items: flex-start;
+            justify-content: space-between;
+            width: 1142px;
+            height: 32px;
+            left: 8px;
+            bottom: 20px;
+            background: #1c1c1c;
+            padding-top: 8px;
+        }
+
+        #footer>div {
+            display: inline-flex;
+            justify-content: space-between;
+        }
+
+        #footer-left {
+            width: 900px;
+            display: inline-flex;
+
+        }
+
+        #footer-left>div {
+            display: inline-flex;
+            justify-content: space-evenly;
+        }
+
+        #footer-right {
+            width: 200px;
+            padding-right: 16px;
+        }
+
+        #footer-right>div {
+            font-weight: 700;
+            color: #262626;
+        }
+
+        #footer-right>div:last-child {
+            font-weight: 900;
+            color: #333;
+        }
+
+        .footer-btn {
+            padding: 4px 10px 6px 10px;
+            font-size: 10px;
+            color: #868686;
+            background: #262626;
+            margin-left: 10px;
+            margin-top: 0px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        #search-area {
+            display: inline-flex;
+            justify-content: space-around;
+            vertical-align: middle;
+            line-height: 50px;
+        }
+
+        #search-area>div:first-child {
+            width: 80px;
+            height: 30px;
+            border-radius: 10px;
+            margin-top: 10px;
+            vertical-align: middle;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        #search-area>div:first-child>a {
+            color: #868686;
+            font-weight: 900;
+            font-size: 12px;
+        }
+
+        #search-area>div:last-child {
+            width: 350px;
+            height: 30px;
+            border-radius: 10px;
+            margin-top: 10px;
+            vertical-align: middle;
+            line-height: 30px;
+            color: #868686;
+            text-align: center;
+            font-weight: 900;
+            font-size: 12px;
+
+        }
+
+        #input-search {
+            border: none;
+            background: none;
+            color: #868686;
+            width: 300px;
+            outline: none;
+        }
+
+        #input-search::placeholder {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        #icon-search {
+            width: 30px;
+            height: 30px;
+            margin-top: 10px;
+        }
+
+        #link-area {
+            display: inline-flex;
+            justify-content: space-evenly;
+        }
+
+        #link-area>div img {
+            width: 20px;
+            height: 20px;
+            padding: 5px;
+            margin: 10px 0px;
+        }
+
+        #link-area>div img:hover {
+            width: 20px;
+            height: 20px;
+            background: #dcdcdc;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .vertical-divider {
+            width: 0px;
+            height: 20px;
+            border-right: 2px solid #333;
+            margin-top: 15px;
+        }
+
+        #icon-area {
+            margin-top: 40px;
+            margin-left: 5%;
+            width: 90%;
+            height: 80px;
+        }
+
+        #icon-area>div {
+            width: 80px;
+            height: 80px;
+            text-align: center;
+            border-radius: 10px;
+            background: #262626;
+        }
+
+        .icon-img {
+            display: block;
+            width: 40px;
+            height: 40px;
+            padding: 5px;
+            margin-top: 5px;
+            margin-left: 15px;
+            border-radius: 10px;
+            transition: 0.2s all ease;
+            filter: grayscale(100%);
+
+        }
+
+        .icon-img:hover {
+            display: block;
+            width: 50px;
+            height: 50px;
+            padding: 0px;
+            margin-top: 5px;
+            margin-left: 15px;
+            border-radius: 10px;
+            transition: 0.2s all ease;
+            cursor: pointer;
+            filter: grayscale(0%);
+
+        }
+
+        .icon-name {
+            font-size: 10px;
+            font-weight: 700;
+            color: #868686;
+            margin-top: 5px;
+            text-decoration: none;
+        }
+
+        .list-view {
+            display: inline-flex;
+            height: 290px;
+            padding: 40px;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #262626;
+        }
+
+        .list-item {
+            width: 130px;
+            padding: 8px 10px 10px 10px;
+            margin-bottom: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #868686;
+            border-radius: 10px;
+            /* text-decoration: underline; */
+            transition: 0.2s all ease;
+            background: linear-gradient(45deg, #262626 25%, #333 0, #333 50%, #262626 0, #262626 75%, #333 0);
+            background-size: 5px 5px
+        }
+
+        .list-item:hover {
+            color: #dcdcdc;
+            text-decoration: underline;
+            transition: 0.2s all ease;
+            cursor: pointer;
+            background: linear-gradient(45deg, #262626 25%, #1c1c1c 0, #1c1c1c 50%, #262626 0, #262626 75%, #1c1c1c 0);
+            background-size: 5px 5px
+        }
+
+        .list-view>div {
+            justify-content: flex-start;
+        }
+
+        #editor {
+            display: none;
+            position: fixed;
+            justify-content: space-between;
+            flex-direction: column;
+            width: 1100px;
+            height: 360px;
+            left: 8px;
+            top: 0;
+            padding: 20px;
+            background: #1c1c1c;
+            transition: 0.2s all ease;
+            opacity: 0.96;
+        }
+
+        #setting-container {
+            display: inline-flex;
+            justify-content: space-between;
+        }
+
+        #setting-category {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 320px;
+            height: 320px;
+            color: #FFF;
+            text-align: center;
+            background: linear-gradient(45deg, #262626 25%, #1c1c1c 0, #1c1c1c 50%, #262626 0, #262626 75%, #1c1c1c 0);
+            background-size: 5px 5px;
+        }
+
+        #setting-category div {
+            font-size: large;
+            text-decoration: underline;
+            width: 280px;
+            height: 60px;
+            margin: 20px;
+            vertical-align: middle;
+            line-height: 60px;
+            cursor: pointer;
+        }
+
+        #setting-category div.select-category {
+            font-size: large;
+            text-decoration: none;
+            background: #1c1c1c;
+        }
+
+        #setting-row {
+            display: inline-flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .setting-col {
+            display: inline-flex;
+            flex-direction: column;
+        }
+
+        .gallery-item,
+        .icon-item {
+            display: inline-flex;
+            justify-content: space-between;
+            width: 750px;
+            height: 20px;
+            color: #868686;
+            margin-bottom: 10px;
+            font-size: 10px;
+            padding: 6px 0px 0 10px;
+            margin: 0 20px 10px 20px;
+            border-left: 2px solid #dcdcdc;
+        }
+
+        .folder-item {
+            display: inline-flex;
+            justify-content: space-between;
+            width: 750px;
+            height: 20px;
+            color: #868686;
+            margin-bottom: 10px;
+            font-size: 10px;
+            padding: 6px 0px 0 10px;
+            margin: 0 20px 10px 20px;
+            border-left: 2px solid #dcdcdc;
+        }
+
+        .gallery-item>div>input,
+        .icon-item>div>input,
+        .folder-item>div>input {
+            background: none;
+            border: none;
+            width: 160px;
+            border-bottom: 1px solid #868686;
+            font-size: 10px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 700;
+            color: #dcdcdc;
+        }
+
+        .gallery-item>div>input::placeholder,
+        .icon-item>div>input::placeholder,
+        .folder-item>div>input::placeholder {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            color: #868686;
+        }
+
+        select {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #1c1c1c;
+            border: none;
+            border-bottom: 1px solid #868686;
+            color: #868686;
+            padding-bottom: 1px;
+        }
+
+        select:focus {
+            background: #1c1c1c;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #868686;
+        }
+
+        #btn-preference-cancel,
+        #btn-preference-save {
+            cursor: pointer;
+        }
+
+        .btn-row {
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            margin: 4px 0;
+            color: #868686;
+        }
+
+        .btn-row>div:last-child {
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+
+        .btn-row>div:last-child>div {
+            margin-left: 20px;
+        }
+
+        .btn-row>div>div {
+            cursor: pointer;
+            text-decoration: underline;
+            color: #dcdcdc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="left-box">
+            <div class="item-box" id="gallery-area">
+
+            </div>
+            <div class="item-box" id="icon-area">
+
+            </div>
+            <div id="center-box">
+                <div id="link-area">
+                    <div>
+                        <a href="https://news.naver.com/"><img src="src/icon/icon-news.svg" alt="뉴스"></a>
+                    </div>
+                    <div class="vertical-divider"></div>
+                    <div>
+                        <a href="https://papago.naver.com/"><img src="src/icon/icon-dictionary.svg" alt="사전"></a>
+                    </div>
+                    <div class="vertical-divider"></div>
+                    <div>
+                        <a href="https://map.kakao.com/"><img src="src/icon/icon-map.svg" alt="지도"></a>
+                    </div>
+                </div>
+                <div id="search-area">
+                    <div><a href="http://google.com">Google</a></div>
+                    <div class="vertical-divider"></div>
+                    <div><input type="text" id="input-search" onkeyup="enterkey()" placeholder="Type to search"></div>
+                </div>
+            </div>
+
+        </div>
+        <div id="right-box">
+            <div class="item-box list-view">
+                <div id="folder-area">
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div id="footer-left">
+                <div>
+                    <div><a class="launcher-basic footer-btn" data-link="shutdown">시스템 종료</a></div>
+                    <div><a class="launcher-basic footer-btn" data-link="reboot">시스템 재부팅</a></div>
+                    <div><a class="footer-btn" id="btn-preference">런처 설정</a></div>
+
+                </div>
+
+                <!--https://learn.microsoft.com/en-us/windows/uwp/launch-resume/launch-settings-app-->
+                <div>
+                    <div><a class="footer-btn" href="ms-settings:easeofaccess-colorfilter-bluelightlink">밝기</a></div>
+                    <div><a class="footer-btn" href="ms-settings:sound">소리</a></div>
+                    <div><a class="footer-btn" href="ms-settings:mousetouchpad">마우스</a></div>
+                </div>
+
+            </div>
+
+            <div id="footer-right">
+                <div>Noly-Poly</div>
+                <div>|</div>
+                <div>NP Launcher</div>
+            </div>
+
+        </div>
+    </div>
+    <div id="editor">
+        <div id="setting-container">
+            <div id="setting-category">
+                <div id="btn-preference-gallery" class="select-category" data-category="GALLERY">갤러리</div>
+                <div id="btn-preference-icon" data-category="ICON">아이콘</div>
+                <div id="btn-preference-folder" data-category="FOLDER">폴더</div>
+            </div>
+            <div id="setting-row">
+
+            </div>
+        </div>
+        <div class="btn-row">
+            <div>
+                <div id="btn-preference-clear">리셋</div>
+            </div>
+            <div>
+                <div id="btn-preference-save">저장하기</div>
+                <div id="btn-preference-cancel">나가기</div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    function enterkey() {
+        if (window.event.keyCode == 13) {
+            let keyword = document.getElementById('input-search').value;
+            let url = 'https://www.google.com/search?q=' + keyword;
+            location.href = url;
+        }
+    }
+</script>
+
+<script type="module" src="./preference.js"></script>
+<script type="module" src="./renderer.js"></script>
+
+
 
 </html>

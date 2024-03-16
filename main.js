@@ -4,6 +4,8 @@ const ipcMain = require('electron').ipcMain;
 const { contextIsolated } = require('process');
 const Store = require('electron-store');
 const computer = require('electron-shutdown-command');
+const { dialog } = require('electron');
+
 
 Store.initRenderer();
 
@@ -19,7 +21,7 @@ const createWindow = () => {
         resizable: false,
         x: (displayWidth - 1150) / 2,
         y: (displayHeight - 420) * 0.8,
-        webPreferences: { 
+        webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true,
             contextIsolation: false,
@@ -40,60 +42,99 @@ const createWindow = () => {
 
     // 외부 브라우저로 연결 2 > 강력한 새로고침 먹힘
     var handleRedirect = (e, url) => {
-        if(url != win.webContents.getURL()) {
-        e.preventDefault()
-        require('electron').shell.openExternal(url)
+        if (url != win.webContents.getURL()) {
+            e.preventDefault()
+            require('electron').shell.openExternal(url)
         }
     }
 
     win.webContents.on('will-navigate', handleRedirect);
     win.webContents.on('new-window', handleRedirect);
-    
+
     win.removeMenu();
 
     win.loadFile('index.html');
 };
- 
+
 app.whenReady().then(() => {
     createWindow();
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow();
     });
 
-    ipcMain.on('run',(event, argument) =>{
+
+    ipcMain.on('explorer-folder', (event) => {
+        dialog.showOpenDialog({
+            properties: ['openDirectory']
+        }).then((data) => {
+            event.sender.send('dialog-path', data.filePaths);
+        });
+    })
+
+    ipcMain.on('explorer-file', (event) => {
+        dialog.showOpenDialog({
+            properties: ['openFile']
+        }).then((data) => {
+            event.sender.send('dialog-path', data.filePaths);
+        });
+    })
+
+    ipcMain.on('run', (event, argument) => {
         console.log(argument);
 
-        // execFile는 default로 shall을 생성하지 않아 더 효율적이다.
-        if(argument.substr(argument.length-3,3) == "exe"){
+        if (argument.substr(argument.length - 3, 3) == "exe") {
             const { execFile } = require('node:child_process');
             const child = execFile(argument, (error, stdout, stderr) => {
-            if (error) {
-                throw error;
-            }
-            console.log(stdout);
+                if (error) {
+                    throw error;
+                }
+                console.log(stdout);
             });
- 
-        }else if(argument == 'shutdown'){
+
+        } else if (argument == 'shutdown') {
             computer.shutdown();
-        }else if(argument == 'reboot'){
+        } else if (argument == 'reboot') {
             computer.reboot();
-        } else{
-            const {shell} = require('electron') 
+        } else {
+            const { shell } = require('electron')
             shell.openPath(argument)
         }
-       
+    });
 
-        // event.sender.send('result',argument);
+    ipcMain.on('save-complete', (event, argument) => {
+        const options = {
+            type: 'info',
+            defaultId: 0,
+            title: 'NP-Launcher',
+            message: argument
+        };
 
-        // var ws = require('windows-shortcuts');
-        // ws.query(argument, console.log);
+        dialog.showMessageBox(null, options, null);
+    });
+
+    ipcMain.on('save-reset', (event, argument) => {
+        dialog.showMessageBox(
+            null,
+            {
+                type: 'warning',
+                message: argument,
+                buttons: ["취소", "리셋"],
+                defaultId: 0,
+                cancelId: 1
+            })
+            .then(result => {
+                event.sender.send('save-reset-confirm', result.response);
+            }
+            );
     });
 });
- 
+
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit();
 });
 
 app.disableHardwareAcceleration()
+
+
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
